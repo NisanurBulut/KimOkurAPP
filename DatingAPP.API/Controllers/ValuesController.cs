@@ -20,16 +20,17 @@ namespace DatingAPP.API.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult GetValues()
         {
-            return new string[] { "value1", "value2" };
+           var values=_context.Values.ToList();
+           return Ok(values);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public IActionResult GetValue(int id)
         {
-            return "value";
+           return Ok( _context.Values.Where(a=>a.Id==id).FirstOrDefault());
         }
 
         // POST api/values
