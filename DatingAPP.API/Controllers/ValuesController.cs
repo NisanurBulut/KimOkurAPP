@@ -29,9 +29,9 @@ namespace DatingAPP.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult GetValue(int id)
+        public async Task<IActionResult> GetValue(int id)
         {
-           return Ok( _context.Values.Where(a=>a.Id==id).FirstOrDefault());
+           return Ok(await _context.Values.Where(a=>a.Id==id).FirstOrDefaultAsync());
         }
 
         // POST api/values
