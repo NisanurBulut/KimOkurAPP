@@ -12,5 +12,10 @@ namespace DatingAPP.API.Controllers
         {
             _rp = rp;
         }
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(string username, string password) {
+            //isteği doğrula
+            username=username.ToLower();
+         }
     }
 }
