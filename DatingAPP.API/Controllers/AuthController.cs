@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DatingAPP.API.Data;
+using DatingAPP.API.Dtos;
 using DatingAPP.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,17 +16,17 @@ namespace DatingAPP.API.Controllers
             _rp = rp;
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register([FromBody]UserForRegisterDto ufrDto)
         {
             //isteği doğrula
-            username = username.ToLower();
-            if (await _rp.UserExists(username))
+            ufrDto.Username = ufrDto.Username.ToLower();
+            if (await _rp.UserExists(ufrDto.Username))
                 return BadRequest("Kullanıcı mevcutta vardır.");
             var userToCreate = new User()
             {
-                Username = username
+                Username = ufrDto.Username
             };
-            var createdUser=await _rp.Register(userToCreate,password);
+            var createdUser=await _rp.Register(userToCreate,ufrDto.Password);
             
             return StatusCode(201);
         }
