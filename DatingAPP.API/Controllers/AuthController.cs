@@ -1,3 +1,4 @@
+using DatingAPP.API.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingAPP.API.Controllers
@@ -6,5 +7,10 @@ namespace DatingAPP.API.Controllers
     [ApiController]
     public class AuthController
     {
+        private readonly IAuthRepository _rp;
+        public AuthController(IAuthRepository rp)
+        {
+            _rp = rp;
+        }
     }
 }
