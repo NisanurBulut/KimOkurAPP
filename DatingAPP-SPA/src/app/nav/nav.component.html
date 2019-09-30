@@ -10,14 +10,27 @@
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Mesajlarım</a>
-      </li>
-     
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()" href="#">Oturum Kapat</a>
+      </li>     
     </ul>
-    <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+    <div *ngIf="loggedIn()" class="dropdown">
+      <a class="dropdown-toggle text-light">
+       Hoşgeldiniz
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profil Düzenle</a>
+        <div class="dropdown-divider">
+        </div>
+        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Oturum Kapat</a>
+      </div>
+    </div>
+    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
       <input class="form-control mr-sm-2" type="text" placeholder="Kullanıcı Adı" 
-      name="username" required [(ngModel)]="model.username">
+      name="Username" required [(ngModel)]="model.Username">
       <input class="form-control mr-sm-2" type="password" placeholder="Şifre" 
-      name="password" required [(ngModel)]="model.password">
+      name="Password" required [(ngModel)]="model.Password">
       <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Oturum Aç</button>
     </form>
 </nav>

@@ -8,14 +8,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
-values:any;
+  values:any;
   constructor(private http:HttpClient) { }
 
   ngOnInit() {  
     this.getValues();
   }
   getValues(){
-    this.http.get('https://localhost:5001/api/values').subscribe(response => {
+    this.http.get('https://localhost:5000/api/values',
+    {headers:  {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+  }).subscribe(response => {
     this.values = response;
     }, error => {
       console.log(error);

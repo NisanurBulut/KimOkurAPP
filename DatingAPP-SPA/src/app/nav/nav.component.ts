@@ -15,10 +15,18 @@ export class NavComponent implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      console.log("Başarılı şekilde oturum açıldı.")
+      console.log('Başarılı şekilde oturum açıldı.');
     },
       error => {
-        console.log("hata oldu", error);
+        console.log('hata oldu', error);
       });
+  }
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+  logOut(){
+    localStorage.removeItem('token');
+    console.log('oturum kapandi');
   }
 }
