@@ -1,18 +1,20 @@
-<form>
+<form #registerForm="ngForm" (ngSubmit)="register()">
   <h2 class="text-center text-primary">Kullanıcı Kayıt Formu</h2>
   <hr>
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Kullanıcı Adı">
+    <input type="text" class="form-control" required name="Username" [(ngModel)]="model.Username"
+     placeholder="Kullanıcı Adı">
   </div>
 
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Şifre">
+    <input type="password" class="form-control" required name="Password" [(ngModel)]="model.Password"
+    placeholder="Şifre">
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Kaydol</button>
-    <button class="btn btn-default" type="button">İptal</button>
+    <button class="btn btn-success" type="submit">Formu Kaydet</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">İptal</button>
   </div>
   
 </form>
