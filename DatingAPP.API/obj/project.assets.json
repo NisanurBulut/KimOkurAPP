@@ -2,7 +2,16 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "Microsoft.AspNet.WebApi.Client/5.2.6": {
+      "Microsoft.AspNet.Cors/5.2.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.7": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "10.0.1",
@@ -13,6 +22,31 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.7"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.7",
+          "Microsoft.AspNet.WebApi.Core": "[5.2.7, 5.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.2.0-preview1-35029": {
@@ -4568,12 +4602,23 @@
     }
   },
   "libraries": {
-    "Microsoft.AspNet.WebApi.Client/5.2.6": {
-      "sha512": "rMDlyePoxggkmN/qgha1+BR2Uy+dOr38xKCQOPfVNKGY07R2nYJGMTKJFE1XFgwD70RYUNazf2fqutjJF18XgQ==",
+    "Microsoft.AspNet.Cors/5.2.7": {
+      "sha512": "7UdjFHX6A2LOd197SlHEamULGvigBzLkwJDQNvJ00gdqkQYrETetEj7TvD6Ld+XCSCBJCjH3WRgXeKRrQQ1DCg==",
       "type": "package",
-      "path": "microsoft.aspnet.webapi.client/5.2.6",
+      "path": "microsoft.aspnet.cors/5.2.7",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Web.Cors.dll",
+        "microsoft.aspnet.cors.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.cors.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.7": {
+      "sha512": "S8hfceUny5C0+yf3B1q6Ey3fysbH4cowYacnI7t1LIX53pFUplNLwxZgmNK2GkNw/hE68Q3Ay+3NiS0eVyR3Sg==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.client/5.2.7",
+      "files": [
         ".signature.p7s",
         "lib/net45/System.Net.Http.Formatting.dll",
         "lib/net45/System.Net.Http.Formatting.xml",
@@ -4581,8 +4626,34 @@
         "lib/netstandard2.0/System.Net.Http.Formatting.xml",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
-        "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
+        "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
         "microsoft.aspnet.webapi.client.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.7": {
+      "sha512": "jh2G5XPV+nlyvNsiUhNORcGnF8GPru7RRCJLisfJktpqv0nrlWK6QjRPUx6rFkFF2B1vqhD9nJHwm+Tat8rNaw==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.core/5.2.7",
+      "files": [
+        ".signature.p7s",
+        "Content/web.config.transform",
+        "lib/net45/System.Web.Http.dll",
+        "lib/net45/System.Web.Http.xml",
+        "microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+      "sha512": "OIsARe+KdWIO1532JoY9wAyOrvY7ItYaccjEMO4LAVSPpNzAcCdEnFvR2LaaFztvcQtPOFggaju2+duvuwfj6g==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.cors/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Web.Http.Cors.dll",
+        "lib/net45/System.Web.Http.Cors.xml",
+        "microsoft.aspnet.webapi.cors.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.cors.nuspec"
       ]
     },
     "Microsoft.AspNetCore/2.2.0-preview1-35029": {
@@ -12110,6 +12181,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Microsoft.AspNet.WebApi.Cors >= 5.2.7",
       "Microsoft.AspNetCore.App >= 2.2.0-preview1-35029",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.1.0",
       "Microsoft.NETCore.App >= 2.2.0-preview-26820-02"
@@ -12156,6 +12228,10 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Cors": {
+            "target": "Package",
+            "version": "[5.2.7, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -12180,5 +12256,37 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "'Microsoft.AspNet.Cors 5.2.7' paketi, proje hedef çerçevesi '.NETCoreApp,Version=v2.2' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "libraryId": "Microsoft.AspNet.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "'Microsoft.AspNet.WebApi.Core 5.2.7' paketi, proje hedef çerçevesi '.NETCoreApp,Version=v2.2' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "'Microsoft.AspNet.WebApi.Cors 5.2.7' paketi, proje hedef çerçevesi '.NETCoreApp,Version=v2.2' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "libraryId": "Microsoft.AspNet.WebApi.Cors",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }

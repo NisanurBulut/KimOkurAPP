@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "8b88a7e2767bb9dbab365e580d4960f84300648b"
+    "signature": "894ae3634ff5a958a8c3c65050212e791103f877"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "DatingAPP.API/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Cors": "5.2.7",
           "Microsoft.AspNetCore.App": "2.2.0-preview1-35029",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.0",
           "Microsoft.NETCore.App": "2.2.0-preview-26820-02"
@@ -33,6 +34,61 @@
         },
         "compile": {
           "DatingAPP.API.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Cors/5.2.7": {
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.7": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.7"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.7",
+          "Microsoft.AspNet.WebApi.Core": "5.2.7"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Cors.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
         }
       },
       "Microsoft.Data.Sqlite.Core/2.1.0": {
@@ -360,16 +416,6 @@
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "Microsoft.AspNet.WebApi.Client/5.2.6": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
-          "Newtonsoft.Json.Bson": "1.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
-        },
-        "compileOnly": true
-      },
       "Microsoft.AspNetCore/2.2.0-preview1-35029": {
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics": "2.2.0-preview1-35029",
@@ -410,7 +456,7 @@
       },
       "Microsoft.AspNetCore.App/2.2.0-preview1-35029": {
         "dependencies": {
-          "Microsoft.AspNet.WebApi.Client": "5.2.6",
+          "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.AspNetCore": "2.2.0-preview1-35029",
           "Microsoft.AspNetCore.Antiforgery": "2.2.0-preview1-35029",
           "Microsoft.AspNetCore.Authentication": "2.2.0-preview1-35029",
@@ -3356,6 +3402,34 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.AspNet.Cors/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7UdjFHX6A2LOd197SlHEamULGvigBzLkwJDQNvJ00gdqkQYrETetEj7TvD6Ld+XCSCBJCjH3WRgXeKRrQQ1DCg==",
+      "path": "microsoft.aspnet.cors/5.2.7",
+      "hashPath": "microsoft.aspnet.cors.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S8hfceUny5C0+yf3B1q6Ey3fysbH4cowYacnI7t1LIX53pFUplNLwxZgmNK2GkNw/hE68Q3Ay+3NiS0eVyR3Sg==",
+      "path": "microsoft.aspnet.webapi.client/5.2.7",
+      "hashPath": "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jh2G5XPV+nlyvNsiUhNORcGnF8GPru7RRCJLisfJktpqv0nrlWK6QjRPUx6rFkFF2B1vqhD9nJHwm+Tat8rNaw==",
+      "path": "microsoft.aspnet.webapi.core/5.2.7",
+      "hashPath": "microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Cors/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OIsARe+KdWIO1532JoY9wAyOrvY7ItYaccjEMO4LAVSPpNzAcCdEnFvR2LaaFztvcQtPOFggaju2+duvuwfj6g==",
+      "path": "microsoft.aspnet.webapi.cors/5.2.7",
+      "hashPath": "microsoft.aspnet.webapi.cors.5.2.7.nupkg.sha512"
+    },
     "Microsoft.Data.Sqlite.Core/2.1.0": {
       "type": "package",
       "serviceable": true,
@@ -3467,13 +3541,6 @@
       "sha512": "sha512-6q2qXc7GA11ZFh3ATFj9LjzF0HfMtlN1hDi8QATSoML4sR+inquXdionvyX8nUegutOAGXjKDp+8MziaUV5Pkg==",
       "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.11",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.11.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebApi.Client/5.2.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rMDlyePoxggkmN/qgha1+BR2Uy+dOr38xKCQOPfVNKGY07R2nYJGMTKJFE1XFgwD70RYUNazf2fqutjJF18XgQ==",
-      "path": "microsoft.aspnet.webapi.client/5.2.6",
-      "hashPath": "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.2.0-preview1-35029": {
       "type": "package",

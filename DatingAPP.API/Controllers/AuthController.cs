@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DatingAPP.API.Data;
 using DatingAPP.API.Dtos;
 using DatingAPP.API.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -41,7 +40,6 @@ namespace DatingAPP.API.Controllers
 
             return StatusCode(201);
         }
-
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto uflDto)
