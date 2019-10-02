@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = environment.apiUrl + '/auth/';
+  baseUrl = environment.apiUrl + 'auth/';
 
   jwtHelper = new JwtHelperService();
   decodedToken: any;
