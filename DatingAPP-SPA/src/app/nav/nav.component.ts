@@ -22,13 +22,12 @@ export class NavComponent implements OnInit {
         this.alertify.success('Başarılı şekilde oturum açıldı.');
       },
       error => {
-        this.alertify.error('hata oldu');
+        this.alertify.error(error);
       }
     );
   }
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+ return this.authService.loggedIn();
   }
   logOut() {
     localStorage.removeItem('token');

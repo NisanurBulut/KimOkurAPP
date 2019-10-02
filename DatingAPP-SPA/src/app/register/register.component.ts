@@ -16,17 +16,16 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   ngOnInit() {}
   register() {
-    this.authService.register(this.model).subscribe(
-      () => {
+    this.authService.register(this.model).subscribe(() => {
         this.alertify.success('kaydolma basarili');
       },
       error => {
-        this.alertify.error('kaydolma hatali');
+        this.alertify.error(error);
       }
     );
   }
   cancel() {
     this.cancelRegister.emit(false);
-    this.alertify.message(this.model);
+   
   }
 }
