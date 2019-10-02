@@ -1,3 +1,10 @@
-<p>
-  member-card works!
-</p>
+<div class="card mb-4">
+  <div class="card-img-wrapper">
+    <img class=card-img-top src="{{user.photoUrl}}" alt="{{user.knownAs}}">
+  </div>
+  <div class="card-body p-1"></div>
+  <h6 class="card-title text-center mb-1"><i class=fa fa-user>
+    {{user.knownAs}},{{user.age}}
+  </i></h6>
+  <p class="card-text text-muted text-center">{{user.city}}</p>
+</div>
