@@ -10,7 +10,7 @@ namespace DatingAPP.API.Data
     {
         private readonly DataContext _dc;
 
-        DatingRepository(DataContext dc)
+        public DatingRepository(DataContext dc)
         {
             _dc = dc;
         }
