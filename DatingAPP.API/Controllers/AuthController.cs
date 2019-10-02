@@ -44,6 +44,7 @@ namespace DatingAPP.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto uflDto)
         {
+            throw new Exception("NB Özel kod hata");
             var userFromRepo = await _rp.Login(uflDto.Username, uflDto.Password);
             if (userFromRepo == null)
                 return Unauthorized();
