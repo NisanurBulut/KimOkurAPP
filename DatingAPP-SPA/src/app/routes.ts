@@ -6,7 +6,7 @@ import { ListsComponent } from './lists/lists.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'members', component: MemberListComponent },
+  { path: 'members', component: MemberListComponent,canActivate:[authg] },
   { path: 'messages', component: MessagesComponent },
   { path: 'lists', component: ListsComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
