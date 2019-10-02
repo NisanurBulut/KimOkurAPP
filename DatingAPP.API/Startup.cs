@@ -12,6 +12,7 @@ using System.Text;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
+using DatingAPP.API.Helpers;
 
 namespace DatingAPP.API
 {
@@ -66,6 +67,7 @@ namespace DatingAPP.API
 
                         if(error!=null)
                         {
+                            context.Response.AddApplicationError(error.Error.Message);
                             await context.Response.WriteAsync(error.Error.Message);
                         }
                     });
