@@ -66,11 +66,11 @@ namespace DatingAPP.API.Data
 
         public async Task<bool> UserExists(string username)
         {
-            if(await _dc.Users.AnyAsync(a=>a.Username==username))
+            if (await _dc.Users.AnyAsync(a => a.Username == username))
                 return true;
 
             return false;
-            
+
         }
     }
 
