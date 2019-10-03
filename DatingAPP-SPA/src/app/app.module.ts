@@ -19,7 +19,10 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
 import { appRoutes } from './routes';
-
+import { AlertifyService } from './_services/alertify.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { UserService } from './_services/user.service';
+import { MemberDetailResolver } from 'src/_resolves/member-detail.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,7 +55,14 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthService, ErrorInterceptorProvider],
+  providers: [
+    AuthService,
+    ErrorInterceptorProvider,
+    AlertifyService,
+    AuthGuard,
+    UserService,
+    MemberDetailResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
