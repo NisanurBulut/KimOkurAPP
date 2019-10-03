@@ -42,7 +42,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    TabsModule,
+    TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     JwtModule.forRoot({
       config: {

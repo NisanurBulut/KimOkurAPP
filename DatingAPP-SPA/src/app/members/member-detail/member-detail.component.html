@@ -22,13 +22,35 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                   <div class="button-group d-flex">
-                    <button class="btn btn-primary w-100"><i class="fa fa-heart"></i> Beğen</button>
-                    <button class="btn btn-warning w-100"><i class="fa fa-envelope"></i> Hemen yaz</button>
-                   </div>
+                    <div class="button-group d-flex">
+                        <button class="btn btn-primary w-100"><i class="fa fa-heart"></i> Beğen</button>
+                        <button class="btn btn-warning w-100"><i class="fa fa-envelope"></i> Hemen yaz</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8"></div>
+        <div class="col-sm-8">
+            <div class="tab-panel">
+                <tabset>
+                    <tab heading="{{user?.knownAs}} Hakkında">
+                        <h4>Tanımlama</h4>
+                        <p>{{user?.introduction}}</p>
+                        <h4>Aradıkları</h4>
+                        <p>{{user?.lookingFor}}</p>
+                    </tab>
+                    <tab heading="İlgilendikleri">
+                        <h4>İlgilendikleri</h4>
+                        <p>{{user?.interests}}</p>
+                    </tab>
+                    <tab heading="Fotoğrafları">
+                        <h4>Fotoğraflar bu alana yüklenecek</h4> 
+                    </tab>
+                    <tab heading="Yazışmalar">
+                        <h4>Yazışmalar burada yer alacak</h4>      
+                    </tab>
+                </tabset>
+
+            </div>
+        </div>
     </div>
 </div>
