@@ -27,3 +27,7 @@ opacity: 0.7;
     bottom:0;
     opacity: 1;
 }
+
+.animate{
+    transition:all 0.3s ease-in-out;
+}
