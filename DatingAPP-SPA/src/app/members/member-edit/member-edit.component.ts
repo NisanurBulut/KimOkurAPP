@@ -23,5 +23,6 @@ export class MemberEditComponent implements OnInit {
   updateUser() {
     console.log(this.user);
     this.alertify.success('Kullanıcı bilgisi başarılı şekilde güncellendi.');
+    this.editForm.reset(this.user);
   }
 }
