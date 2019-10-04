@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/_models/User';
+import { UserIdentity } from '../_models/UserIdentity';
 import {
   Resolve,
+  Route,
   Router,
   ActivatedRouteSnapshot
 } from '@angular/router';
@@ -11,8 +12,9 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../_services/auth.service';
 
+
 @Injectable()
-export class MemberEditResolver implements Resolve<User> {
+export class MemberIdentityEditResolver implements Resolve<UserIdentity> {
   constructor(
     private userService: UserService,
     private authservice: AuthService,
@@ -20,8 +22,8 @@ export class MemberEditResolver implements Resolve<User> {
     private alertify: AlertifyService
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<User> {
-    return this.userService.getUser(this.authservice.decodedToken.nameid).pipe(
+  resolve(route: ActivatedRouteSnapshot): Observable<UserIdentity> {
+    return this.userService.getUserIdentity(this.authservice.decodedToken.nameid).pipe(
       catchError(error => {
         this.alertify.error('Kişi verisi okunurken hata ile karsilasildi');
         this.router.navigate(['/member/edit']);

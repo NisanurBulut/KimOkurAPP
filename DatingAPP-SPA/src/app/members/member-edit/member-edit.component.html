@@ -16,11 +16,11 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <img class="card-img-top img-thumbnail" src="{{user?.photoUrl}}" alt="{{user?.knownAs}}">
+                <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}">
                 <div class="card-body">
                     <div>
                         <strong>Mekan : </strong>
-                        <p>{{user.city}},{{user?.country}}</p>
+                        <p>{{user.city}},{{user.country}}</p>
                     </div>
                     <div>
                         <strong>Yaş : </strong>
@@ -28,11 +28,11 @@
                     </div>
                     <div>
                         <strong>Aktif Zamanı : </strong>
-                        <p>{{user.lastActive}}</p>
+                        <p>{{user.lastActive | date:'medium'}}</p>
                     </div>
                     <div>
                         <strong>Katılım : </strong>
-                        <p>{{user.created}}</p>
+                        <p>{{user.created | date:'medium'}}</p>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -43,7 +43,18 @@
         <div class="col-sm-8">
             <div class="tab-panel ">
                 <tabset class="member-tabset">
-                    <tab heading="Profili düzenle">
+                        <tab heading="Kullanıcı Bilgileri">
+                                <form #IdentityForm="ngForm" id="IdentityForm" (submit)="updateUser()">                                   
+                                        <h4>Detaylar</h4>
+                                        <div class="form-vertical">
+                                            <label for="username">Kullanıcı Adı</label>
+                                            <input name="username" type="text" class="form-control text" [(ngModel)]="userIdentity.username">
+                                            <label for="dateOfBirth">Doğum Tarihi</label>
+                                            <input name="dateOfBirth" type="datetime" class="form-control" [(ngModel)]="userIdentity.dateOfBirth">
+                                        </div>
+                                </form>
+                            </tab>
+                    <tab heading="Profili Bilgileri">
                         <form #editForm="ngForm" id="editForm" (submit)="updateUser()">
                             <h4>Kendinden Bahset Bize</h4>
                             <textarea name="introduction" rows="6" class="form-control"
@@ -63,7 +74,6 @@
                                     <input name="country" type="text" class="form-control text" [(ngModel)]="user.country">
                                 </div>
                         </form>
-
                     </tab>
                     <tab heading="Fotoğrafları Düzenle">
                         <p>Fotoğraf düzenleme burada olacak</p>

@@ -25,10 +25,11 @@ export class MemberDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // tslint:disable-next-line: no-unused-expression
+   
     this.route.data.subscribe(data => {
       //typescript type sever
-      const usr = 'user';
-      this.user = data[usr];
+      this.user = data['user'];
     });
 
     this.galleryOptions = [
