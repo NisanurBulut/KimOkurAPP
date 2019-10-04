@@ -10,7 +10,6 @@ import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthGuard } from '../_guards/auth.guard';
 import { AuthService } from '../_services/auth.service';
 
 @Injectable()
