@@ -3,6 +3,11 @@ import { User } from 'src/app/_models/User';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
+import {
+  NgxGalleryOptions,
+  NgxGalleryImage,
+  NgxGalleryAnimation
+} from 'ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
@@ -11,6 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MemberDetailComponent implements OnInit {
   user: User;
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[];
   constructor(
     private userService: UserService,
     private alertift: AlertifyService,
@@ -18,7 +25,34 @@ export class MemberDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadUser();
+    this.route.data.subscribe(data => {
+      //typescript type sever
+      const usr = 'user';
+      this.user = data[usr];
+    });
+
+    this.galleryOptions = [
+      {
+        width: '500px',
+        height: '500px',
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide,
+        preview: false
+      }
+    ];
+    this.galleryImages =this.getImages();
+  }
+  getImages() {
+    const imageUrls = [];
+    for (const photo of this.user.photos) {
+      imageUrls.push({
+        small: photo.url,
+        medium: photo.url,
+        big: photo.url,
+        description: photo.description
+      });
+    }
+    return imageUrls;
   }
 
   //member/4

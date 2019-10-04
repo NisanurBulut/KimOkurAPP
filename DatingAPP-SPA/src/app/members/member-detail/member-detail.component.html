@@ -6,29 +6,51 @@
                 <div class="card-body">
                     <div>
                         <strong>Mekan : </strong>
-                        <p>{{user?.city}},{{user?.country}}</p>
+                        <p>{{user.city}},{{user?.country}}</p>
                     </div>
                     <div>
                         <strong>Yaş : </strong>
-                        <p>{{user?.age}}</p>
+                        <p>{{user.age}}</p>
                     </div>
                     <div>
                         <strong>Aktif Zamanı : </strong>
-                        <p>{{user?.lastActive}}</p>
+                        <p>{{user.lastActive}}</p>
                     </div>
                     <div>
                         <strong>Katılım : </strong>
-                        <p>{{user?.created}}</p>
+                        <p>{{user.created}}</p>
                     </div>
                 </div>
                 <div class="card-footer">
-                   <div class="button-group d-flex">
-                    <button class="btn btn-primary w-100"><i class="fa fa-heart"></i> Beğen</button>
-                    <button class="btn btn-warning w-100"><i class="fa fa-envelope"></i> Hemen yaz</button>
-                   </div>
+                    <div class="button-group d-flex">
+                        <button class="btn btn-primary w-100"><i class="fa fa-heart"></i> Beğen</button>
+                        <button class="btn btn-warning w-100"><i class="fa fa-envelope"></i> Hemen yaz</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8"></div>
+        <div class="col-sm-8">
+            <div class="tab-panel ">
+                <tabset class="member-tabset">
+                    <tab heading="{{user?.knownAs}} Hakkında">
+                        <h4>Tanımlama</h4>
+                        <p>{{user.introduction}}</p>
+                        <h4>Aradıkları</h4>
+                        <p>{{user?.lookingFor}}</p>
+                    </tab>
+                    <tab heading="İlgilendikleri">
+                        <h4>İlgilendikleri</h4>
+                        <p>{{user.interests}}</p>
+                    </tab>
+                    <tab heading="Fotoğrafları">
+                        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                    </tab>
+                    <tab heading="Yazışmalar">
+                        <h4>Yazışmalar burada yer alacak</h4>      
+                    </tab>
+                </tabset>
+
+            </div>
+        </div>
     </div>
 </div>
