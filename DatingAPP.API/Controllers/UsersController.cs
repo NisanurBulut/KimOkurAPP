@@ -59,5 +59,20 @@ namespace DatingAPP.API.Controllers
                 return NoContent();
             throw new Exception($"{id} nolu kişinin bilgileri güncellenemedi.");
         }
+        [Route("[action]/{id}")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateIdentityUser(int id, UserIdentityForUpdate userIdentityForUpdate)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFromRepo = await _repo.GetUser(id);
+
+            _mapper.Map(userIdentityForUpdate, userFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+            throw new Exception($"{id} nolu kişinin bilgileri güncellenemedi.");
+        }
     }
 }
