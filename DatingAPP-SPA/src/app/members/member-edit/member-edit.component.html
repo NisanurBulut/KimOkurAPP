@@ -4,7 +4,7 @@
                 <h1>{{user.knownAs}} Hakkında</h1>
         </div>
        <div class="col-sm-8">
-           <div class="alert alert-info">
+           <div *ngIf="editForm.dirty" class="alert alert-info">
                <p>
                    <strong>
                        Hatırlatma :
@@ -36,10 +36,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                
-                        <button class="btn btn-success btn-block">Profili Kaydet</button>
-                  
-                   
+                    <button [disabled]="!editForm.dirty" class="btn btn-success btn-block">Profili Kaydet</button>
                 </div>
             </div>
         </div>
@@ -47,7 +44,7 @@
             <div class="tab-panel ">
                 <tabset class="member-tabset">
                     <tab heading="Profili düzenle">
-                        <form>
+                        <form #editForm="ngForm" (submit)="updateUser()">
                             <h4>Kendinden Bahset Bize</h4>
                             <textarea name="introduction" rows="6" class="form-control"
                                 [(ngModel)]="user.introduction"></textarea>
