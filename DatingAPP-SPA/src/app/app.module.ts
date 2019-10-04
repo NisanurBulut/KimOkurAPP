@@ -25,6 +25,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from 'src/app/_resolves/member-detail.resolver';
 import { MemberListResolver } from './_resolves/member-list.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +46,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
