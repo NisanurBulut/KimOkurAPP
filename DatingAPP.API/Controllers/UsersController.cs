@@ -36,6 +36,14 @@ namespace DatingAPP.API.Controllers
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
         }
+       [Route("[action]/{id}")]
+       [HttpGet]
+        public async Task<IActionResult> GetUserIdentity(int id)
+        {
+            var user = await _repo.GetUser(id);
+            var userToReturn = _mapper.Map<UserIdentityForUpdate>(user);
+            return Ok(userToReturn);
+        }
         
          [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
