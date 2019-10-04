@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm', { static: true }) editForm: NgForm;
-  @ViewChild('IdentityForm', { static: true }) IdentityForm: NgForm;
+  @ViewChild('identityForm', { static: true }) identityForm: NgForm;
   user: User;
   userIdentity: UserIdentity;
   //tarayıcı penceresi kapanırken düzenleme işlemi yapılıyyorsa uyarı verir.
@@ -34,11 +34,22 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.userIdentity = data['userIdentity'];
     });
-    
-  }
 
+  }
+  updateIdentifyUser() {
+    this.userService.updateIdentityUser(this.authService.decodedToken.nameid, this.userIdentity)
+      .subscribe(next => {
+        this.alertify.success('Kullanıcı bilgisi başarılı şekilde güncellendi.');
+        this.IdentityForm.reset(this.userIdentity);
+      },
+        error => {
+          this.alertify.error(error);
+        });
+
+  }
   updateUser() {
     console.log(this.user);
+
     this.userService.updateUser(this.authService.decodedToken.nameid, this.user)
       .subscribe(next => {
         this.alertify.success('Kullanıcı bilgisi başarılı şekilde güncellendi.');
@@ -48,4 +59,5 @@ export class MemberEditComponent implements OnInit {
           this.alertify.error(error);
         });
   }
+
 }

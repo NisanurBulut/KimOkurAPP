@@ -27,4 +27,7 @@ export class UserService {
   updateUser(id: number, user: User) {
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
+  updateIdentityUser(id: number, userIdentity: UserIdentity) {
+    return this.http.put(this.baseUrl + 'users/UpdateIdentityUser/' + id, userIdentity);
+  }
 }

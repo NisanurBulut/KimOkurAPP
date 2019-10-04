@@ -36,7 +36,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Profili Kaydet</button>
+                    <div class=button-group>
+                            <button [disabled]="!identityForm.dirty" form="identityForm" class="btn btn-success">Kullanıcı Kaydet</button>
+                            <button [disabled]="!editForm.dirty " form="editForm" class="btn btn-dark btn">Profili Kaydet</button>
+                        </div>
                 </div>
             </div>
         </div>
@@ -44,7 +47,7 @@
             <div class="tab-panel ">
                 <tabset class="member-tabset">
                         <tab heading="Kullanıcı Bilgileri">
-                                <form #IdentityForm="ngForm" id="IdentityForm" (submit)="updateUser()">                                   
+                                <form #identityForm="ngForm" id="identityForm" (submit)="updateIdentifyUser()">                                   
                                         <h4>Detaylar</h4>
                                         <div class="form-vertical">
                                             <label for="username">Kullanıcı Adı</label>
