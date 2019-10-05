@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using CloudinaryDotNet;
 using KimOkur.API.Data;
 using KimOkur.API.Helpers;
+using KimOkurAPP.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -27,9 +29,17 @@ namespace KimOkur.API.Controllers
             _cc = cloudinaryConfig;
 
 
-            Account acc = new Account(_cc.Value.CloudName,_cc.Value.ApiKey,_cc.Value.ApiSecret);
+            Account acc = new Account(_cc.Value.CloudName, _cc.Value.ApiKey, _cc.Value.ApiSecret);
 
             _cloudinary = new Cloudinary(acc);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPhotoForUser(int userId,
+         PhotoForCreationDto photoForCreation)
+        {
+
+        }
+        //Kitap fotoğraflarıda eklenecek
     }
 }
