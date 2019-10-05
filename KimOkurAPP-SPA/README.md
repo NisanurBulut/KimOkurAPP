@@ -1,6 +1,10 @@
-# DatingAPPSPA
+# KimOkur Uygulaması
+* Açılış Ekranı
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP-SPA/blob/master/src/assets/Preview/Goruntu1.JPG)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+## KimOkurAPPSPA
+
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
 ## Development server
 
