@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using DatingApp.API.Data;
-using DatingAPP.API.Models;
+using KimOkur.API.Data;
+using KimOkur.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingAPP.API.Data
+namespace KimOkur.API.Data
 {
     public class AuthRepository : IAuthRepository
     {

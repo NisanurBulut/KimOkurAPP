@@ -1,9 +1,9 @@
 using AutoMapper;
-using DatingAPP.API.Models;
-using DatingAPP.API.Dtos;
+using KimOkur.API.Models;
+using KimOkur.API.Dtos;
 using System.Linq;
 
-namespace DatingAPP.API.Helpers
+namespace KimOkur.API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {

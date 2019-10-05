@@ -1,21 +1,21 @@
-﻿using DatingApp.API.Data;
+﻿using KimOkur.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using DatingAPP.API.Data;
+using KimOkur.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
-using DatingAPP.API.Helpers;
+using KimOkur.API.Helpers;
 using AutoMapper;
 
-namespace DatingAPP.API
+namespace KimOkur.API
 {
     public class Startup
     {

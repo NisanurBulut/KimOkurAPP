@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 
-namespace DatingAPP.API.Helpers
+namespace KimOkur.API.Helpers
 {
     public static class Extensions
     {

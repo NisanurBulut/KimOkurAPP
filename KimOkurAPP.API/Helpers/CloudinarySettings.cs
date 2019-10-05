@@ -1,4 +1,4 @@
-namespace DatingAPP.API.Helpers
+namespace KimOkur.API.Helpers
 {
     public class CloudinarySettings
     {

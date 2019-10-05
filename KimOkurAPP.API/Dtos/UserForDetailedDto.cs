@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DatingAPP.API.Models;
+using KimOkur.API.Models;
 
-namespace DatingAPP.API.Dtos
+namespace KimOkur.API.Dtos
 {
     public class UserForDetailedDto
     {

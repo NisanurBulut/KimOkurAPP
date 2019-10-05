@@ -1,4 +1,4 @@
-namespace DatingAPP.API.Dtos
+namespace KimOkur.API.Dtos
 {
     public class UserForLoginDto
     {

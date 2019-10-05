@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
-using DatingAPP.API.Data;
-using DatingAPP.API.Dtos;
+using KimOkur.API.Data;
+using KimOkur.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DatingAPP.API.Controllers
+namespace KimOkur.API.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

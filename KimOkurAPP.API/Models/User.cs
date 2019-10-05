@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DatingAPP.API.Models
+namespace KimOkur.API.Models
 {
     public class User
     {

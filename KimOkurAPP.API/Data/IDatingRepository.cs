@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DatingAPP.API.Models;
+using KimOkur.API.Models;
 
-namespace DatingAPP.API.Data
+namespace KimOkur.API.Data
 {
     public interface IDatingRepository
     {

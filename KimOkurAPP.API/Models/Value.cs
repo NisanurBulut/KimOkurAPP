@@ -1,4 +1,4 @@
-namespace DatingApp.API.Models
+namespace KimOkur.API.Models
 {
     public class Value
     {

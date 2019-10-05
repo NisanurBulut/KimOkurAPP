@@ -1,6 +1,6 @@
 using System;
 
-namespace DatingAPP.API.Models
+namespace KimOkur.API.Models
 {
     public class Photo
     {

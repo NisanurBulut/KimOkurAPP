@@ -1,13 +1,12 @@
 ﻿using System;
-using DatingApp.API.Data;
-using DatingAPP.API.Data;
+using KimOkur.API.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace DatingAPP.API
+namespace KimOkur.API
 {
     public class Program
     {

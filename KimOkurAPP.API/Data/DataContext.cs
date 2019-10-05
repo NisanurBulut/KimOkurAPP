@@ -1,8 +1,8 @@
-using DatingApp.API.Models;
-using DatingAPP.API.Models;
+using KimOkur.API.Models;
+using KimOkur.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingApp.API.Data
+namespace KimOkur.API.Data
 {
     public class DataContext:DbContext
     {
