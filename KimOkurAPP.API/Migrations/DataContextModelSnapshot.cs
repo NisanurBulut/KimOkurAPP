@@ -14,7 +14,7 @@ namespace DatingAPP.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
+                .HasAnnotation("ProductVersion", "2.2.0-preview1-35029");
 
             modelBuilder.Entity("DatingAPP.API.Models.Photo", b =>
                 {
@@ -27,9 +27,11 @@ namespace DatingAPP.API.Migrations
 
                     b.Property<bool>("IsMain");
 
+                    b.Property<string>("PublicId");
+
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -88,9 +90,10 @@ namespace DatingAPP.API.Migrations
 
             modelBuilder.Entity("DatingAPP.API.Models.Photo", b =>
                 {
-                    b.HasOne("DatingAPP.API.Models.User")
+                    b.HasOne("DatingAPP.API.Models.User", "User")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
