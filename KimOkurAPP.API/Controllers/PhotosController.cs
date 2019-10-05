@@ -38,6 +38,16 @@ namespace KimOkur.API.Controllers
             _cloudinary = new Cloudinary(acc);
         }
 
+
+
+        [HttpGet("{id}", Name = "GetUserPhoto")]
+        public async Task<IActionResult> GetUserPhoto(int id)
+        {
+            var photoFromRepo = await _rp.GetUserPhoto(id);
+            var photo = _mp.Map<PhotoForReturnDto>(photoFromRepo);
+            return Ok(photo);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId,
          PhotoForCreationDto photoForCreation)
@@ -74,8 +84,12 @@ namespace KimOkur.API.Controllers
                 photo.IsMain = true;
             }
             userFromRepo.Photos.Add(photo);
-            if(await _rp.SaveAll()){
-                return Ok();
+          
+
+            if (await _rp.SaveAll())
+            {  
+                 var photoForReturn=_mp.Map<PhotoForReturnDto>(photo);
+                return CreatedAtAction("GetUserPhoto", new { id = photo.Id },photoForReturn);
             }
             return BadRequest("Fotoğraf yüklemesi başarısız oldu");
         }

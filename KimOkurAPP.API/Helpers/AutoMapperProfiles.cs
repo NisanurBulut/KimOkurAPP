@@ -2,6 +2,7 @@ using AutoMapper;
 using KimOkur.API.Models;
 using KimOkur.API.Dtos;
 using System.Linq;
+using KimOkurAPP.API.Dtos;
 
 namespace KimOkur.API.Helpers
 {
@@ -24,6 +25,8 @@ namespace KimOkur.API.Helpers
             CreateMap<UserForUpdateDto,User>();
             CreateMap<User,UserIdentityForUpdate>();
             CreateMap<UserIdentityForUpdate,User>();
+            CreateMap<Photo,PhotoForReturnDto>();
+            CreateMap<PhotoForReturnDto,Photo>();
         }
     }
 }
