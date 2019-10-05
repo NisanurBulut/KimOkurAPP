@@ -11,10 +11,5 @@ namespace KimOkurAPP.API.Dtos
         public DateTime DateAdded { get; set; }
         public string PublicId { get; set; }
 
-
-        PhotoForCreationDto()
-        {
-            DateAdded = DateTime.Now;
-        }
     }
 }

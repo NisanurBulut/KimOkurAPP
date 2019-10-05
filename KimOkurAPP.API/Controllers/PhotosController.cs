@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace KimOkur.API.Controllers
 {
     [Authorize]
     [Route("api/users/{userId}/photos")]
+    [ApiController]
     public class PhotosController : ControllerBase
     {
         private readonly IDatingRepository _rp;
@@ -47,17 +49,16 @@ namespace KimOkur.API.Controllers
             var photo = _mp.Map<PhotoForReturnDto>(photoFromRepo);
             return Ok(photo);
         }
-
         [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId,
-         PhotoForCreationDto photoForCreation)
+        [FromForm] PhotoForCreationDto PhotoForCreationDto)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
             var userFromRepo = await _rp.GetUser(userId);
 
-            var file = photoForCreation.File;
+            var file = PhotoForCreationDto.File;
 
             var uploadResult = new ImageUploadResult();
 
@@ -75,10 +76,11 @@ namespace KimOkur.API.Controllers
                     uploadResult = _cloudinary.Upload(uploadParams);
                 }
             }
-            photoForCreation.Url = uploadResult.Uri.ToString();
-            photoForCreation.PublicId = uploadResult.PublicId;
+            PhotoForCreationDto.Url = uploadResult.Uri.ToString();
+            PhotoForCreationDto.PublicId = uploadResult.PublicId;
+            PhotoForCreationDto.DateAdded=DateTime.Now;
             //Mapping
-            var photo = _mp.Map<Photo>(photoForCreation);
+            var photo = _mp.Map<Photo>(PhotoForCreationDto);
             if (userFromRepo.Photos.Any(async => async.IsMain))
             {
                 photo.IsMain = true;
