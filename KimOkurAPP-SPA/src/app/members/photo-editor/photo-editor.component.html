@@ -18,16 +18,9 @@
            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
            (fileOver)="fileOverBase($event)"
            [uploader]="uploader"
-           class="well my-drop-zone">
-          Dosya Yükleme Alanı1
-      </div>
-
-      <div ng2FileDrop
-           [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
-           (fileOver)="fileOverAnother($event)"
-           [uploader]="uploader"
-           class="well my-drop-zone">
-           Dosya Yükleme Alanı2
+           class="card bg-faded p-3 text-center nb-3 my-drop-zone">
+           <i class="fa fa-upload fa-3x"></i>
+          Fotoğraf Bırak
       </div>
 
       Çoklu
@@ -37,7 +30,7 @@
       <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
 
-  <div class="col-md-9" style="margin-bottom: 40px">
+  <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
 
       <h3>Yükleme Kuyruğu</h3>
       <p>Bekleyen : {{ uploader?.queue?.length }}</p>
