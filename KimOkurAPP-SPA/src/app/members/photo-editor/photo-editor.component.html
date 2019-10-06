@@ -2,7 +2,10 @@
   <div class="col-sm-2" *ngFor="let photo of photos">
 <img src="{{photo.url}}" class="img-thumbnail p-1" alt="">
 <div class="text-center">
-  <button type="button" class="btn btn-sm">Profil Resmi</button>
+  <button type="button" class="btn btn-sm mr-1" 
+  (click)="setProfilePhoto(photo)" 
+  [ngClass]="photo.isMain ? 'btn-dark active':' btn-secondary'"
+  [disabled]="photo.isMain">Profil</button>
   <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
 </div>
   </div>

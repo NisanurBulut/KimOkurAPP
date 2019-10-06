@@ -114,9 +114,9 @@ namespace KimOkur.API.Controllers
             var currentMainPhoto = await _rp.GetMainPhotoForUser(userId);
             currentMainPhoto.IsMain = false;
             photoFromRepo.IsMain = true;
-            
+
             if (await _rp.SaveAll())
-                NoContent();
+              return  NoContent();
 
             return BadRequest("Fotoğraf bulunamadı.");
         }

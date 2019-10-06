@@ -30,4 +30,7 @@ export class UserService {
   updateIdentityUser(id: number, userIdentity: UserIdentity) {
     return this.http.put(this.baseUrl + 'users/UpdateIdentityUser/' + id, userIdentity);
   }
+  setProfilePhoto(userId: number, id: number) {
+    return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {})
+  }
 }
