@@ -81,10 +81,12 @@ namespace KimOkur.API.Controllers
             PhotoForCreationDto.DateAdded = DateTime.Now;
             //Mapping
             var photo = _mp.Map<Photo>(PhotoForCreationDto);
+            photo.IsMain=true;
             if (userFromRepo.Photos.Any(async => async.IsMain))
             {
-                photo.IsMain = true;
+                photo.IsMain = false;
             }
+            
             userFromRepo.Photos.Add(photo);
 
 
