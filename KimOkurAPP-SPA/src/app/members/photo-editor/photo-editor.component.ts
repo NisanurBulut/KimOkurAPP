@@ -25,7 +25,17 @@ export class PhotoEditorComponent implements OnInit {
   ngOnInit() {
     this.initilizeUploader();
   }
-
+  deleteUserPhoto(id: number) {
+    this.alertify.confirm('Fotoğrafı silmek istediğinizdene min misiniz ?', () => {
+      this.userService.deleteUserPhoto(this.authService.decodedToken.nameid, id)
+        .subscribe(() => {
+          this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+          this.alertify.success('Fotoğraf başarılı şekilde silinmiştir.');
+        }, error => {
+          this.alertify.error(error);
+        });
+    });
+  }
   setProfilePhoto(photo: Photo) {
     this.userService.setProfilePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
       this.currentProfilePhoto = this.photos.filter(p => p.isMain === true)[0];

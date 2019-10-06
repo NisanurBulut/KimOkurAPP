@@ -6,7 +6,11 @@
   (click)="setProfilePhoto(photo)" 
   [ngClass]="photo.isMain ? 'btn-dark active':' btn-secondary'"
   [disabled]="photo.isMain">Profil</button>
-  <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+  <button type="button" 
+  (click)="deleteUserPhoto(photo.id)"
+   class="btn btn-sm btn-danger"
+   [disabled]="photo.isMain">
+   <i class="fa fa-trash-o"></i></button>
 </div>
   </div>
 </div>
