@@ -7,6 +7,9 @@
 
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu1.JPG)
 
+
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu1_1.JPG)
+
 ## Okur Fotoğraf Galerisi
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2.JPG)
 
