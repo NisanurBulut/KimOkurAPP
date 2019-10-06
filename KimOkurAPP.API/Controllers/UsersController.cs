@@ -41,7 +41,7 @@ namespace KimOkur.API.Controllers
         public async Task<IActionResult> GetUserIdentity(int id)
         {
             var user = await _repo.GetUser(id);
-            var userToReturn = _mapper.Map<UserIdentityForUpdate>(user);
+            var userToReturn = _mapper.Map<UserIdentityForUpdateDto>(user);
             return Ok(userToReturn);
         }
         
@@ -61,7 +61,7 @@ namespace KimOkur.API.Controllers
         }
         [Route("[action]/{id}")]
         [HttpPut]
-        public async Task<IActionResult> UpdateIdentityUser(int id, UserIdentityForUpdate userIdentityForUpdate)
+        public async Task<IActionResult> UpdateIdentityUser(int id, UserIdentityForUpdateDto userIdentityForUpdate)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();

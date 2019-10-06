@@ -39,6 +39,7 @@ export class MemberEditComponent implements OnInit {
 
   }
   updateIdentifyUser() {
+    console.log(this.userIdentity);
     this.userService.updateIdentityUser(this.authService.decodedToken.nameid, this.userIdentity)
       .subscribe(next => {
         this.alertify.success('Kullanıcı bilgisi başarılı şekilde güncellendi.');

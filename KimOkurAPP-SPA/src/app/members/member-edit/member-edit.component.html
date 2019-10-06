@@ -48,16 +48,20 @@
                 <tabset class="member-tabset">
                         <tab heading="Kullanıcı Bilgileri">
                                 <form #identityForm="ngForm" id="identityForm" (submit)="updateIdentifyUser()">                                   
-                                        <h4>Detaylar</h4>
+                                        
                                         <div class="form-vertical">
                                             <label for="username">Kullanıcı Adı</label>
-                                            <input name="username" type="text" class="form-control text" [(ngModel)]="userIdentity.username">
+                                            <input name="username" type="text" class="form-control text m-2" [(ngModel)]="userIdentity.username">
                                             <label for="dateOfBirth">Doğum Tarihi</label>
-                                            <input name="dateOfBirth" type="datetime" class="form-control" [(ngModel)]="userIdentity.dateOfBirth">
+                                            <input name="dateOfBirth" type="datetime" class="form-control  m-2" [(ngModel)]="userIdentity.dateOfBirth">
+                                            <label for="city">Şehir</label>
+                                            <input name="city" type="text" class="form-control text m-2" [(ngModel)]="userIdentity.city">
+                                            <label for="country">Ülke</label>
+                                            <input name="country" type="text" class="form-control text  m-2" [(ngModel)]="userIdentity.country">
                                         </div>
                                 </form>
                             </tab>
-                    <tab heading="Profili Bilgileri">
+                    <tab heading="Profil Bilgileri">
                         <form #editForm="ngForm" id="editForm" (submit)="updateUser()">
                             <h4>Kendinden Bahset Bize</h4>
                             <textarea name="introduction" rows="6" class="form-control"
@@ -69,13 +73,7 @@
                                 <h4>Seni ilgilendiren Şeyler</h4>
                             <textarea name="interest" rows="6" class="form-control"
                                 [(ngModel)]="user.interest"></textarea>
-                                <h4>Detaylar</h4>
-                                <div class="form-inline">
-                                    <label for="city">Şehir</label>
-                                    <input name="city" type="text" class="form-control text" [(ngModel)]="user.city">
-                                    <label for="country">Ülke</label>
-                                    <input name="country" type="text" class="form-control text" [(ngModel)]="user.country">
-                                </div>
+                               
                         </form>
                     </tab>
                     <tab heading="Fotoğrafları Düzenle">
