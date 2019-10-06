@@ -8,9 +8,9 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
  
-  <div class="col-md-3">
+  <div class="col-md-3 ">
 
       <h3>Dosya Seçin</h3>
 
@@ -53,21 +53,21 @@
       <div>
           <div>
               Yükleme Kuyruğu Süreci:
-              <div class="progress" style="">
+              <div class="progress mb-4">
                   <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
               </div>
           </div>
           <button type="button" class="btn btn-success btn-s"
                   (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-              <span class="glyphicon glyphicon-upload"></span> Hepsini Yükle
+              <span class="fa fa-upload"></span> Hepsini Yükle
           </button>
           <button type="button" class="btn btn-warning btn-s"
                   (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-              <span class="glyphicon glyphicon-ban-circle"></span> Hepsini İptal Et
+              <span class="fa fa-ban-circle"></span> Hepsini İptal Et
           </button>
           <button type="button" class="btn btn-danger btn-s"
                   (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-              <span class="glyphicon glyphicon-trash"></span>Hepsini Kaldır
+              <span class="fa fa-trash"></span>Hepsini Kaldır
           </button>
       </div>
 
