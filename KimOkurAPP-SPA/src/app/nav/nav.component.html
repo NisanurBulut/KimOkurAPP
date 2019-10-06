@@ -2,7 +2,7 @@
   <div class=container>
       <a class="navbar-brand" [routerLink]="['/home']">KimOkur?</a>
 
-      <ul *ngIf="loggedIn()"  class="navbar-nav mr-auto">
+      <ul *ngIf="loggedIn()"  class="navbar-nav mr-auto">        
         <li class="nav-item" routerLinkActive="router-link-active">
           <a class="nav-link" [routerLink]="['/members']">Okurlar 
             <span class="sr-only">(current)</span></a>
@@ -19,6 +19,9 @@
         </li>    
       </ul>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
+          <span>
+              <img src="{{authService.currentUser.photoUrl}}">
+            </span>
         <a class="dropdown-toggle text-light" dropdownToggle>
          Hoşgeldiniz {{authService.decodedToken?.unique_name | titlecase}}
         </a>
