@@ -16,7 +16,7 @@ export class PhotoEditorComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
-
+  currentProfilePhoto: Photo;
   constructor(private authService: AuthService, private userService: UserService, private alertify: AlertifyService) { }
 
   ngOnInit() {
@@ -25,6 +25,9 @@ export class PhotoEditorComponent implements OnInit {
 
   setProfilePhoto(photo: Photo) {
     this.userService.setProfilePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
+      this.currentProfilePhoto = this.photos.filter(p => p.isMain == true)[0];
+      this.currentProfilePhoto.isMain = false;
+      photo.isMain = true;
       this.alertify.success("Profil fotoğrafı başarıyla güncellendi.");
     }, error => {
       this.alertify.error(error);
