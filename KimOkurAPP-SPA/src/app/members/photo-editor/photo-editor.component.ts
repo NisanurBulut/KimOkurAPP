@@ -47,6 +47,7 @@ export class PhotoEditorComponent implements OnInit {
           description: res.description,
           isMain: res.isMain
         };
+        //push sayesinde mini galeride goruntulenır
         this.photos.push(photo);
       }
     };

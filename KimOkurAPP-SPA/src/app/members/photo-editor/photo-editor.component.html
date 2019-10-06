@@ -22,10 +22,8 @@
            <i class="fa fa-upload fa-3x"></i>
           Fotoğraf Bırak
       </div>
-
       Çoklu
       <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
-
       Tek
       <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
@@ -59,15 +57,15 @@
           </div>
           <button type="button" class="btn btn-success btn-s"
                   (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-              <span class="fa fa-upload"></span> Hepsini Yükle
+              <span class="fa fa-upload"></span>Yükle
           </button>
           <button type="button" class="btn btn-warning btn-s"
                   (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-              <span class="fa fa-ban-circle"></span> Hepsini İptal Et
+              <span class="fa fa-ban-circle"></span>İptal Et
           </button>
           <button type="button" class="btn btn-danger btn-s"
                   (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-              <span class="fa fa-trash"></span>Hepsini Kaldır
+              <span class="fa fa-trash"></span>Kaldır
           </button>
       </div>
 
