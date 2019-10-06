@@ -101,26 +101,24 @@ namespace KimOkur.API.Controllers
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
+          
             var user = await _rp.GetUser(userId);
             if (!user.Photos.Any(async => async.Id == id))
-            {
                 return Unauthorized();
-            }
+
             var photoFromRepo = await _rp.GetUserPhoto(id);
 
             if (photoFromRepo.IsMain)
-            {
                 return BadRequest("Fotoğraf zaten profil fotoğrafıdır.");
-            }
+
             var currentMainPhoto = await _rp.GetMainPhotoForUser(userId);
             currentMainPhoto.IsMain = false;
             photoFromRepo.IsMain = true;
-            if(await _rp.SaveAll())
-            {
+            
+            if (await _rp.SaveAll())
                 NoContent();
-            }else{
-                return BadRequest("Fotoğraf bulunamadı.");
-            }
+
+            return BadRequest("Fotoğraf bulunamadı.");
         }
 
     }
