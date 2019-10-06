@@ -15,6 +15,10 @@
 ## Okur Fotoğraf Galerisi
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2.JPG)
 
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2_1.JPG)
+
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2_2.JPG)
+
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu3.JPG)
 
 ## Okur Profil Düzenlemesi
