@@ -15,7 +15,8 @@ namespace KimOkur.API.Data
         }
         public async Task<User> Login(string username, string password)
         {
-            var user = await _dc.Users.FirstOrDefaultAsync(a => a.Username == username);
+            var user = await _dc.Users.Include(p=>p.Photos)
+            .FirstOrDefaultAsync(a => a.Username == username);
             if (user == null)
             {
                 return null;
