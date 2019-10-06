@@ -17,6 +17,7 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('identityForm', { static: true }) identityForm: NgForm;
   user: User;
   userIdentity: UserIdentity;
+  photoUrl:string;
   //tarayıcı penceresi kapanırken düzenleme işlemi yapılıyyorsa uyarı verir.
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
@@ -26,13 +27,16 @@ export class MemberEditComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, 
-    private alertify: AlertifyService,
-     private userService: UserService, private authService: AuthService) { }
+              private alertify: AlertifyService,
+              private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+
+    this.authService.photoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
     this.route.data.subscribe(data => {
       this.userIdentity = data['userIdentity'];
     });

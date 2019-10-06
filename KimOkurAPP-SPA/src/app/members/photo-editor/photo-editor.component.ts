@@ -31,9 +31,11 @@ export class PhotoEditorComponent implements OnInit {
       this.currentProfilePhoto = this.photos.filter(p => p.isMain === true)[0];
       this.currentProfilePhoto.isMain = false;
       photo.isMain = true;
-      this.getProfilePhotoChanged.emit(photo.url);
+      this.authService.changeUserPhoto(photo.url);
+      this.authService.currentUser.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
       this.alertify.success('Profil fotoğrafı başarıyla güncellendi.');
-     
+
     }, error => {
       this.alertify.error(error);
     });
