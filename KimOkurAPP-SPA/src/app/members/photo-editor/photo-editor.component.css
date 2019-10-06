@@ -7,3 +7,6 @@ img .img-thumbnail{
 .nv-file-over{
     border: dotted 3px #772953;
 }
+input[type=file] {
+    color:transparent;
+}
