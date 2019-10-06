@@ -7,5 +7,10 @@
 * Açılış Ekranı
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu1.JPG)
 
+# Okur Fotoğraf Galerisi
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2.JPG)
+
+# Okur Profil Düzenlemesi
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu3.JPG)
 
 
