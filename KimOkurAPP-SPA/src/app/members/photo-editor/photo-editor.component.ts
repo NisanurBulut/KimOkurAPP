@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { Photo } from 'src/app/_models/Photo';
 import { environment } from 'src/environments/environment';
@@ -13,6 +13,9 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
+  //emitter ile fotoğraf değişiminin ardından ekranın refresh edilmeis sağlanır.
+  @Output() getProfilePhotoChanged = new EventEmitter<string>(); //foto url
+
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
@@ -25,10 +28,12 @@ export class PhotoEditorComponent implements OnInit {
 
   setProfilePhoto(photo: Photo) {
     this.userService.setProfilePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
-      this.currentProfilePhoto = this.photos.filter(p => p.isMain == true)[0];
+      this.currentProfilePhoto = this.photos.filter(p => p.isMain === true)[0];
       this.currentProfilePhoto.isMain = false;
       photo.isMain = true;
-      this.alertify.success("Profil fotoğrafı başarıyla güncellendi.");
+      this.getProfilePhotoChanged.emit(photo.url);
+      this.alertify.success('Profil fotoğrafı başarıyla güncellendi.');
+     
     }, error => {
       this.alertify.error(error);
     });

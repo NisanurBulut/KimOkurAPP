@@ -79,7 +79,9 @@
                         </form>
                     </tab>
                     <tab heading="Fotoğrafları Düzenle">
-                       <app-photo-editor [photos]="user.photos"></app-photo-editor>
+                       <app-photo-editor [photos]="user.photos" 
+                       (getProfilePhotoChanged)="updateProfilePhoto($event)">
+                    </app-photo-editor>
                     </tab>
                 </tabset>
             </div>
