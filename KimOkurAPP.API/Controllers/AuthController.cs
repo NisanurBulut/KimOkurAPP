@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using KimOkur.API.Data;
 using KimOkur.API.Dtos;
 using KimOkur.API.Models;
@@ -11,15 +12,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace KimOkur.API.Controllers
-{  
+{
     [Route("/api/[Controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _rp;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository rp, IConfiguration config)
+        private readonly IMapper _mp;
+        public AuthController(IAuthRepository rp, IConfiguration config, IMapper mapper)
         {
+            _mp = mapper;
             _config = config;
             _rp = rp;
         }
@@ -44,7 +47,7 @@ namespace KimOkur.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto uflDto)
         {
-            
+
             var userFromRepo = await _rp.Login(uflDto.Username, uflDto.Password);
             if (userFromRepo == null)
                 return Unauthorized();
