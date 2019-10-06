@@ -78,7 +78,7 @@ namespace KimOkur.API.Controllers
             }
             PhotoForCreationDto.Url = uploadResult.Uri.ToString();
             PhotoForCreationDto.PublicId = uploadResult.PublicId;
-            PhotoForCreationDto.DateAdded=DateTime.Now;
+            PhotoForCreationDto.DateAdded = DateTime.Now;
             //Mapping
             var photo = _mp.Map<Photo>(PhotoForCreationDto);
             if (userFromRepo.Photos.Any(async => async.IsMain))
@@ -86,14 +86,41 @@ namespace KimOkur.API.Controllers
                 photo.IsMain = true;
             }
             userFromRepo.Photos.Add(photo);
-          
+
 
             if (await _rp.SaveAll())
-            {  
-                 var photoForReturn=_mp.Map<PhotoForReturnDto>(photo);
-                return CreatedAtAction("GetUserPhoto", new { id = photo.Id },photoForReturn);
+            {
+                var photoForReturn = _mp.Map<PhotoForReturnDto>(photo);
+                return CreatedAtAction("GetUserPhoto", new { id = photo.Id }, photoForReturn);
             }
             return BadRequest("Fotoğraf yüklemesi başarısız oldu");
+        }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMainPhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var user = await _rp.GetUser(userId);
+            if (!user.Photos.Any(async => async.Id == id))
+            {
+                return Unauthorized();
+            }
+            var photoFromRepo = await _rp.GetUserPhoto(id);
+
+            if (photoFromRepo.IsMain)
+            {
+                return BadRequest("Fotoğraf zaten profil fotoğrafıdır.");
+            }
+            var currentMainPhoto = await _rp.GetMainPhotoForUser(userId);
+            currentMainPhoto.IsMain = false;
+            photoFromRepo.IsMain = true;
+            if(await _rp.SaveAll())
+            {
+                NoContent();
+            }else{
+                return BadRequest("Fotoğraf bulunamadı.");
+            }
         }
 
     }
