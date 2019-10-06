@@ -101,7 +101,7 @@ namespace KimOkur.API.Controllers
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
-          
+
             var user = await _rp.GetUser(userId);
             if (!user.Photos.Any(async => async.Id == id))
                 return Unauthorized();
@@ -116,11 +116,40 @@ namespace KimOkur.API.Controllers
             photoFromRepo.IsMain = true;
 
             if (await _rp.SaveAll())
-              return  NoContent();
+                return NoContent();
 
             return BadRequest("Fotoğraf bulunamadı.");
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUserPhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
+            var user = await _rp.GetUser(userId);
+            if (!user.Photos.Any(async => async.Id == id))
+                return Unauthorized();
+
+            var photoFromRepo = await _rp.GetUserPhoto(id);
+
+            if (photoFromRepo.IsMain)
+                return BadRequest("Profil fotoğrafı silinemez.");
+            //Clouidinary apiden fotoğraflar silinebilmeli
+            var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+
+            var result = _cloudinary.Destroy(deleteParams);
+
+            if(result.Result=="ok"){
+                _rp.Delete(photoFromRepo);
+            }
+            if(await _rp.SaveAll()){
+                return Ok();
+            }
+
+            return BadRequest("Fotoğraf silme işlemi başarısız oldu.");
+        }
+        //Kitap fotoğraflarıda eklenecek
     }
-    //Kitap fotoğraflarıda eklenecek
+
+
 }
