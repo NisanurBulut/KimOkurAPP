@@ -134,17 +134,28 @@ namespace KimOkur.API.Controllers
 
             if (photoFromRepo.IsMain)
                 return BadRequest("Profil fotoğrafı silinemez.");
-            //Clouidinary apiden fotoğraflar silinebilmeli
-            var deleteParams = new DeletionParams(photoFromRepo.PublicId);
 
-            var result = _cloudinary.Destroy(deleteParams);
+            if (photoFromRepo.PublicId != null)
+            {
+                //Clouidinary apiden fotoğraflar silinebilmeli
+                var deleteParams = new DeletionParams(photoFromRepo.PublicId);
 
-            if(result.Result=="ok"){
+                var result = _cloudinary.Destroy(deleteParams);
+
+                if (result.Result == "ok")
+                {
+                    _rp.Delete(photoFromRepo);
+                }
+            }
+            else
+            {
                 _rp.Delete(photoFromRepo);
             }
-            if(await _rp.SaveAll()){
+            if (await _rp.SaveAll())
+            {
                 return Ok();
             }
+
 
             return BadRequest("Fotoğraf silme işlemi başarısız oldu.");
         }
