@@ -15,11 +15,14 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm', { static: true }) editForm: NgForm;
   @ViewChild('identityForm', { static: true }) identityForm: NgForm;
+
   user: User;
   userIdentity: UserIdentity;
-  photoUrl:string;
-  //tarayıcı penceresi kapanırken düzenleme işlemi yapılıyyorsa uyarı verir.
+  photoUrl: string;
+
+  
   @HostListener('window:beforeunload', ['$event'])
+
   unloadNotification($event: any) {
     if (this.editForm.dirty) {
       $event.returnValue = true;
@@ -35,7 +38,7 @@ export class MemberEditComponent implements OnInit {
       this.user = data['user'];
     });
 
-    this.authService.photoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
 
     this.route.data.subscribe(data => {
       this.userIdentity = data['userIdentity'];

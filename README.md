@@ -19,6 +19,8 @@
 
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2_2.JPG)
 
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2_3.JPG)
+
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu3.JPG)
 
 ## Okur Profil Düzenlemesi

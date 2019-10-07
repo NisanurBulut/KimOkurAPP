@@ -78,6 +78,7 @@ export class PhotoEditorComponent implements OnInit {
         };
         //push sayesinde mini galeride goruntulenır
         this.photos.push(photo);
+        
       }
     };
   }

@@ -41,7 +41,7 @@ namespace KimOkur.API.Data
         }
          public async Task<Photo> GetUserPhoto(int id)
         {
-            var photo = await _dc.Photos.FirstOrDefaultAsync(p => p.UserId==id);
+            var photo = await _dc.Photos.FirstOrDefaultAsync(p => p.Id == id);
             return photo;
         }
 
