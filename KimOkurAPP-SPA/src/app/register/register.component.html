@@ -31,7 +31,7 @@
     [ngClass]="{'is-invalid':registerForm.get('confirmPassword').errors 
     && registerForm.get('confirmPassword').touched 
     || registerForm.get('confirmPassword').touched 
-    && registerForm.get('confirmPassword').hasError('nomatch') }" 
+    && registerForm.hasError('nomatch') }" 
     class="form-control" formControlName="confirmPassword" 
     placeholder="Parola">
     
@@ -40,7 +40,7 @@
     registerForm.get('confirmPassword').touched ">Lütfen parolayı yeniden belirleyiniz.</div>
 
     <div class="invalid-feedback" 
-    *ngIf="registerForm.get('confirmPassword').hasError('nomatch') &&
+    *ngIf="registerForm.hasError('nomatch') &&
     registerForm.get('confirmPassword').touched ">Parola eşleştirilemedi.</div>
 
   </div>

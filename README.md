@@ -12,6 +12,21 @@
 
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu1_2.JPG)
 
+
+## Üye Olma Ekranı
+* Kullanıcı adı belirlenmek zorundadır.
+
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu5_1.JPG)
+
+* Belirlenen parola en az 4 en fazla 8 karakter olmalıdır.
+
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu5_2.JPG)
+
+* Parola tekrarı, belirlenen parola ile aynı olmak zorundadır.
+
+![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu5_2.JPG)
+
+
 ## Okur Fotoğraf Galerisi
 ![AnaGoruntu](https://github.com/NisanurBulut/KimOkurAPP/blob/master/Tanitim/Goruntu2.JPG)
 
