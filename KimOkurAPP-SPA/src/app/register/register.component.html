@@ -75,7 +75,7 @@
 
   </div>
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit" mr-2>Formu Kaydet</button>
+    <button class="btn btn-success" [disabled]="!registerForm.valid" type="submit" mr-2>Formu Kaydet</button>
     <button class="btn btn-default" type="button" (click)="cancel()">İptal</button>
   </div>
 </form>
