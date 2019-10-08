@@ -3,17 +3,46 @@
   <hr>
 
   <div class="form-group">
-    <input type="text" class="form-control" formControlName="username" 
+    <input type="text" [ngClass]="{'is-invalid':registerForm.get('username').errors && 
+    registerForm.get('username').touched}" 
+    class="form-control" 
+    formControlName="username" 
      placeholder="Kullanıcı Adı">
+     <div class="invalid-feedback">Lütfen kullanıcı adı belirleyiniz.</div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group is-invalid">
     <input type="password" class="form-control" formControlName="password" 
+    [ngClass]="{'is-invalid':registerForm.get('password').errors && 
+    registerForm.get('password').touched}"
     placeholder="Şifre">
+
+    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('required') && 
+    registerForm.get('password').touched">Lütfen parola adı belirleyiniz.</div>
+
+    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('minlength') && 
+    registerForm.get('password').touched">Parola en az 4 karakter içermelidir.</div>
+
+    <div class="invalid-feedback" *ngIf="registerForm.get('password').hasError('maxlength') && 
+    registerForm.get('password').touched">Parola en çok 8 karakter içermelidir.</div>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" formControlName="confirmPassword" 
-    placeholder="Şifreyi yeniden yazınız">
+    <input type="password"  
+    [ngClass]="{'is-invalid':registerForm.get('confirmPassword').errors 
+    && registerForm.get('confirmPassword').touched 
+    || registerForm.get('confirmPassword').touched 
+    && registerForm.get('confirmPassword').hasError('nomatch') }" 
+    class="form-control" formControlName="confirmPassword" 
+    placeholder="Parola">
+    
+    <div class="invalid-feedback" 
+    *ngIf="registerForm.get('confirmPassword').hasError('required') &&
+    registerForm.get('confirmPassword').touched ">Lütfen parolayı yeniden belirleyiniz.</div>
+
+    <div class="invalid-feedback" 
+    *ngIf="registerForm.get('confirmPassword').hasError('nomatch') &&
+    registerForm.get('confirmPassword').touched ">Parola eşleştirilemedi.</div>
+
   </div>
   <div class="form-group text-center">
     <button class="btn btn-success" type="submit" mr-2>Formu Kaydet</button>
