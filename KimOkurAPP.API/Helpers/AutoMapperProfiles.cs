@@ -28,6 +28,7 @@ namespace KimOkur.API.Helpers
             CreateMap<PhotoForCreationDto, Photo>();
             CreateMap<Photo,PhotoForReturnDto>();
             CreateMap<PhotoForReturnDto,Photo>();
+            CreateMap<UserForRegisterDto,User>();
         }
     }
 }
