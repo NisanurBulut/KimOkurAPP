@@ -68,7 +68,6 @@ export class PhotoEditorComponent implements OnInit {
     this.uploader.onSuccessItem = (item, response, headers) => {
       if (response) {
         const res: Photo = JSON.parse(response);
-
         const photo = {
           id: res.id,
           url: res.url,
@@ -78,7 +77,12 @@ export class PhotoEditorComponent implements OnInit {
         };
         //push sayesinde mini galeride goruntulenır
         this.photos.push(photo);
-        
+        if (photo.isMain) {
+          this.authService.changeUserPhoto(photo.url);
+          this.authService.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+          this.alertify.success('Profil fotoğrafı başarıyla güncellendi.');
+        }
       }
     };
   }
