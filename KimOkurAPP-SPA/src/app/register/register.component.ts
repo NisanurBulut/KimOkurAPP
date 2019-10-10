@@ -4,6 +4,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { User } from '../_models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService, private fb: FormBuilder, private router: Router) { }
 
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
     this.createRegisterForm();
   }
   passwordMatchValidator(g: FormGroup) {
-    return g.get('password').value === g.get('confirmPassword').value ? null : { 'nomatch': true }
+    return g.get('password').value === g.get('confirmPassword').value ? null : { 'nomatch': true };
   }
   register() {
     if (this.registerForm.valid) {
@@ -36,6 +37,13 @@ export class RegisterComponent implements OnInit {
       },
         error => {
           this.alertify.error(error);
+        },
+        () => {
+          this.authService.login(this.user).subscribe(() => {
+            this.router.navigate(['/members']);
+          }, error => {
+            this.alertify.error(error);
+          });
         });
     }
   }

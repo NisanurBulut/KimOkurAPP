@@ -33,14 +33,14 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(user));
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
           this.currentUser = user.user;
-         this.changeUserPhoto(this.currentUser.photoUrl);
+          this.changeUserPhoto(this.currentUser.photoUrl);
         }
       })
     );
   }
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + 'register', model);
+  register(user: User) {
+    return this.http.post(this.baseUrl + 'register', user);
   }
   loggedIn() {
     const token = localStorage.getItem('token');
