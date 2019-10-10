@@ -28,11 +28,11 @@
                     </div>
                     <div>
                         <strong>Aktif Zamanı : </strong>
-                        <p>{{user.lastActive | date:'medium'}}</p>
+                        <p>{{user.lastActive | timeAgo}}</p>
                     </div>
                     <div>
                         <strong>Katılım : </strong>
-                        <p>{{user.created | date:'medium'}}</p>
+                        <p>{{user.created | date:'mediumDate'}}</p>
                     </div>
                 </div>
                 <div class="card-footer">
