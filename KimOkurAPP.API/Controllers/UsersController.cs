@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KimOkur.API.Data;
 using KimOkur.API.Dtos;
+using KimOkurAPP.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KimOkur.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

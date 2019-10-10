@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using KimOkur.API.Helpers;
 using AutoMapper;
+using KimOkurAPP.API.Helpers;
 
 namespace KimOkur.API
 {
@@ -51,7 +52,7 @@ namespace KimOkur.API
                         ValidateAudience = false
                     };
                 });
-
+            services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
