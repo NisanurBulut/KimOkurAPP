@@ -26,7 +26,7 @@
   </div>
   <div class="form-group">
     <input [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}" class="form-control"
-      placeholder="Doğum Günü" formControlName="dateOfBirth" type="text" bsDatepicker>
+      placeholder="Doğum Günü" formControlName="dateOfBirth" type="text" bsDatepicker [bsConfig]="bsConfig">
     <div class="invalid-feedback" *ngIf="registerForm.get('dateOfBirth').touched && registerForm.get('dateOfBirth').hasError('required')">Doğum günü bilgisi gereklidir.</div>
   </div>
   <div class="form-group">
