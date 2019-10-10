@@ -35,13 +35,10 @@ namespace KimOkur.API.Controllers
             ufrDto.Username = ufrDto.Username.ToLower();
             if (await _rp.UserExists(ufrDto.Username))
                 return BadRequest("Kullanıcı mevcutta vardır.");
-            var userToCreate = new User()
-            {
-                Username = ufrDto.Username
-            };
+            var userToCreate =_mp.Map<User>(ufrDto);
             var createdUser = await _rp.Register(userToCreate, ufrDto.Password);
-
-            return StatusCode(201);
+            var userToReturn=_mp.Map<User>(ufrDto);
+            return  CreatedAtRoute("GetUser",new {Controller="Users", id=createdUser.Id},userToReturn);
         }
 
         [HttpPost("login")]
