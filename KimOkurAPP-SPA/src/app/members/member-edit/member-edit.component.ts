@@ -6,6 +6,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-member-edit',
@@ -20,7 +21,7 @@ export class MemberEditComponent implements OnInit {
   userIdentity: UserIdentity;
   photoUrl: string;
 
-  
+  bsConfig: Partial<BsDatepickerConfig>;
   @HostListener('window:beforeunload', ['$event'])
 
   unloadNotification($event: any) {
@@ -34,6 +35,10 @@ export class MemberEditComponent implements OnInit {
               private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.bsConfig = {
+      containerClass: 'theme-red'
+    };
+
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
