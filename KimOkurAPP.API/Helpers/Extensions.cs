@@ -1,5 +1,7 @@
 using System;
+using KimOkurAPP.API.Helpers;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace KimOkur.API.Helpers
 {
@@ -10,6 +12,11 @@ namespace KimOkur.API.Helpers
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
+        public static void AddPagination(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems,int totalPages){
+            var pagination=new PaginationHeader(currentPage,totalPages,itemsPerPage,totalItems);
+            response.Headers.Add("Pagination",JsonConvert.SerializeObject(pagination));
+            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
         public static int CalculateAge(this DateTime theDateTime)
         {
