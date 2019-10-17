@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,6 +52,12 @@ namespace KimOkur.API.Data
             var users = _dc.Users.Include(p => p.Photos).AsQueryable();
             users = users.Where(u => u.Id != userParams.UserId);
             users=users.Where(users=>users.Gender==userParams.Gender);
+            if(userParams.MinAge!=18 || userParams.MaxAge!=99)
+            {
+                var minDog=DateTime.Today.AddYears(-userParams.MaxAge-1);
+                var maxDog=DateTime.Today.AddYears(-userParams.MinAge-1);
+                users=users.Where(u=>u.DateOfBirth>=minDog && u.DateOfBirth<=maxDog);
+            }
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
