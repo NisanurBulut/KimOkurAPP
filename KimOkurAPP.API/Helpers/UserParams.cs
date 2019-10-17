@@ -2,16 +2,14 @@ namespace KimOkurAPP.API.Helpers
 {
     public class UserParams
     {
-        public int MaxPageSize = 50;
+        private const int MaxPageSize = 50;
         public int PageNumber { get; set; } = 1;
-        public int PageSize = 10;
-        public int MyProperty
+        private int pageSize = 10;
+        public int PageSize
         {
-            get { return PageSize; }
-            set
-            {
-                PageSize = (value > MaxPageSize) ? MaxPageSize : value;
-            }
+            get { return pageSize;}
+            set { pageSize = (value > MaxPageSize) ? MaxPageSize : value;}
         }
+        
     }
 }
