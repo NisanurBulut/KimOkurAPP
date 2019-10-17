@@ -39,7 +39,7 @@ export class MemberListComponent implements OnInit {
     this.userParams.gender = this.user.gender === 'kadin' ? 'erkek' : 'kadin';
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
-
+    this.userParams.orderby='lastActive';
   }
  
   changePage(event: any): void {

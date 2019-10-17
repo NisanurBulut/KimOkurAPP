@@ -28,7 +28,12 @@
         </div>
         <button type="submit" class="btn btn-primary" style="margin-left:10px">Filtrele</button>
         <button type="button" class="btn btn-info"  (click)="resetFilters()" style="margin-left:10px">Filtre Temizle</button>
-      
+        <div class="col">
+            <div class="btn-group float-right">
+              <button type="button" name="orderBy" btnRadio="lastActive" (click)="loadUsers()" [(ngModel)]="userParams.orderBy" class="btn btn-primary">Aktif Zaman</button>
+              <button type="button" name="orderBy" btnRadio="created" (click)="loadUsers()"  [(ngModel)]="userParams.orderBy"  class="btn btn-primary">Yeni Üyeler</button>
+            </div>
+          </div>
       </form>
       <br> 
   <div class="row">

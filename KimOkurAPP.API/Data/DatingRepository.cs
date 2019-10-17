@@ -65,7 +65,7 @@ namespace KimOkur.API.Data
                 users = users.Where(u => u.DateOfBirth >= minDog && u.DateOfBirth <= maxDog);
             }
 
-            if (!string.IsNullOrEmpty(userParams.OrderBy)
+            if (!string.IsNullOrEmpty(userParams.OrderBy))
             {
                 switch (userParams.OrderBy)
                 {
