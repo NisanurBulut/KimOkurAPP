@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KimOkur.API.Data;
 using KimOkur.API.Dtos;
+using KimOkur.API.Helpers;
 using KimOkurAPP.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,10 +26,11 @@ namespace KimOkur.API.Controllers
             _repo = repo;
         }
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
-            var users = await _repo.GetUsers();
+            var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListForDto>>(users);
+            Response.AddPagination(users.currentPage,users.PageSize,users.TotalCount,users.TotalPages);
             return Ok(usersToReturn);
         }
         [HttpGet("{id}", Name="GetUser")]

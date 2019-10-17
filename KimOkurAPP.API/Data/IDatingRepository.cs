@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KimOkur.API.Models;
+using KimOkurAPP.API.Helpers;
 
 namespace KimOkur.API.Data
 {
@@ -10,7 +11,7 @@ namespace KimOkur.API.Data
           void Delete<T>(T entity) where T:class;
 
           Task<bool> SaveAll();
-          Task<IEnumerable<User>> GetUsers();
+          Task<PagedList<User>> GetUsers(UserParams userParams);
 
           Task<User> GetUser(int id);
           Task<Photo> GetUserPhoto(int id);

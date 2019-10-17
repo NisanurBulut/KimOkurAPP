@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KimOkur.API.Data;
 using KimOkur.API.Models;
+using KimOkurAPP.API.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace KimOkur.API.Data
@@ -45,11 +46,11 @@ namespace KimOkur.API.Data
             return photo;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = await _dc.Users.Include(p => p.Photos).ToListAsync();
+            var users =  _dc.Users.Include(p => p.Photos);
 
-            return users;
+            return await PagedList<User>.CreateAsync(users,userParams.PageNumber,userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
