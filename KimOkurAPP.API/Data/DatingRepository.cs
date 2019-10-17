@@ -50,13 +50,17 @@ namespace KimOkur.API.Data
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
             var users = _dc.Users.Include(p => p.Photos).AsQueryable();
+
             users = users.Where(u => u.Id != userParams.UserId);
-            users=users.Where(users=>users.Gender==userParams.Gender);
+
+            users=users.Where(u=>u.Gender==userParams.Gender);
+
             if(userParams.MinAge!=18 || userParams.MaxAge!=99)
             {
-                var minDog=DateTime.Today.AddYears(-userParams.MaxAge-1);
-                var maxDog=DateTime.Today.AddYears(-userParams.MinAge-1);
-                users=users.Where(u=>u.DateOfBirth>=minDog && u.DateOfBirth<=maxDog);
+                var minDog = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+                var maxDog = DateTime.Today.AddYears(-userParams.MinAge);
+
+                users = users.Where(u => u.DateOfBirth >= minDog && u.DateOfBirth <= maxDog);
             }
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }

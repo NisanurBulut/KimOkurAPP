@@ -6,27 +6,28 @@
 
 
 <div class="container mt-3">
-    <form class="form-inline" novalidate>
+    <form class="form-inline" #form="ngForm" (ngSunmit)="loadUsers()" novalidate>
         <div class="form-group">
           <label for="minAge">Min Yaş</label>
-          <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" name="minAge">
+          <input type="number" class="form-control ml-1" style="width: 70px" id="minAge"
+           [(ngModel)]="userParams.minAge" name="minAge">
         </div>
       
         <div class="form-group px-2">
           <label for="maxAge">Max Yaş</label>
-          <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" name="maxAge">
+          <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" [(ngModel)]="userParams.maxAge" name="maxAge">
         </div>
       
         <div class="form-group px-2">
           <label for="gender">Gösterim: </label>
-          <select class="form-control ml-1" style="width: 130px" id="gender" name="gender">
-            <option>
-      
+          <select class="form-control ml-1" style="width: 130px" id="gender" [(ngModel)]="userParams.gender" name="gender">
+            <option *ngFor="let gender of genderList" [value]="gender.value">
+          {{gender.display}}
             </option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary" style="margin-left:10px">Filtrele</button>
-        <button type="button" class="btn btn-info" style="margin-left:10px">Filtre Temizle</button>
+        <button type="button" class="btn btn-info"  (click)="resetFilters()" style="margin-left:10px">Filtre Temizle</button>
       
       </form>
       <br> 
@@ -37,11 +38,12 @@
   </div>
 </div>
 <div class="d-flex justify-content-center">
-  <pagination [boundaryLinks]="true" 
-  [totalItems]="pagination.totalItems" 
-  [itemsPerPage]="pagination.itemsPerPage"
-  [(ngModel)]="pagination.currentPage" 
-  (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    <pagination
+    [boundaryLinks]="true"
+    [totalItems]="pagination.totalItems"
+    [(ngModel)]="pagination.currentPage"
+    [itemsPerPage]="pagination.itemsPerPage"
+    (pageChanged)="changePage($event)"
+  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
   </pagination>
