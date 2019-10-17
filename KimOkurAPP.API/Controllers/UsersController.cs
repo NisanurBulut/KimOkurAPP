@@ -36,7 +36,7 @@ namespace KimOkur.API.Controllers
 
             if (string.IsNullOrEmpty(userParams.Gender))
             {
-                userParams.Gender = userFromrepo.Gender=="male"?"female":"male";
+                userParams.Gender = userFromrepo.Gender=="erkek"?"kadın":"erkek";
             }
             var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListForDto>>(users);
