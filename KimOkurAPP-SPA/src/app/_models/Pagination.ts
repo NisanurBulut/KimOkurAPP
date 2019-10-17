@@ -6,7 +6,7 @@ export interface Pagination {
 }
 
 export class PaginatedResult<T> {
-  //mesaj listesindede kullanılacak
+  // mesaj listesindede kullanılacak
   result: T;
   pagination: Pagination;
 }

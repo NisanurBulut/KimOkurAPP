@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_models/User';
 import { UserIdentity } from '../_models/UserIdentity';
-
+import { PaginatedResult } from '../_models/Pagination';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,55 @@ import { UserIdentity } from '../_models/UserIdentity';
 export class UserService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+  // sayfalama için httpparams kullanılır
+  getUsers(page?, itemsPerPage?): Observable<PaginatedResult<User[]>> {
+    const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users');
+    let params = new HttpParams();
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    return this.http.get<User[]>(this.baseUrl + 'users', {observe: 'response', params})
+    .pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return paginatedResult;
+      })
+    );
   }
+
 
   getUser(id): Observable<User> {
     return this.http.get<User>(this.baseUrl + 'users/' + id);
   }
   getUserIdentity(id): Observable<UserIdentity> {
-    return this.http.get<UserIdentity>(this.baseUrl + 'users/GetUserIdentity/' + id);
+    return this.http.get<UserIdentity>(
+      this.baseUrl + 'users/GetUserIdentity/' + id
+    );
   }
   updateUser(id: number, user: User) {
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
   updateIdentityUser(id: number, userIdentity: UserIdentity) {
-    return this.http.put(this.baseUrl + 'users/UpdateIdentityUser/' + id, userIdentity);
+    return this.http.put(
+      this.baseUrl + 'users/UpdateIdentityUser/' + id,
+      userIdentity
+    );
   }
   setProfilePhoto(userId: number, id: number) {
-    return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {})
+    return this.http.post(
+      this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain',
+      {}
+    );
   }
   deleteUserPhoto(userId: number, id: number) {
-    return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id)
+    return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id);
   }
 }
