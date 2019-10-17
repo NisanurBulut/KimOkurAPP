@@ -28,29 +28,39 @@ namespace KimOkur.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userFromrepo = await _repo.GetUser(currentUserId);
+
+            userParams.UserId = currentUserId;
+
+            if (string.IsNullOrEmpty(userParams.Gender))
+            {
+                userParams.Gender = userFromrepo.Gender=="male"?"female":"male";
+            }
             var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListForDto>>(users);
             Response.AddPagination(users.currentPage, users.PageSize,
                 users.TotalCount, users.TotalPages);
             return Ok(usersToReturn);
         }
-        [HttpGet("{id}", Name="GetUser")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
         }
-       [Route("[action]/{id}")]
-       [HttpGet]
+        [Route("[action]/{id}")]
+        [HttpGet]
         public async Task<IActionResult> GetUserIdentity(int id)
         {
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserIdentityForUpdateDto>(user);
             return Ok(userToReturn);
         }
-        
-         [HttpPut("{id}")]
+
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
