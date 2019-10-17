@@ -30,7 +30,8 @@ namespace KimOkur.API.Controllers
         {
             var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListForDto>>(users);
-            Response.AddPagination(users.currentPage,users.PageSize,users.TotalCount,users.TotalPages);
+            Response.AddPagination(users.currentPage, users.PageSize,
+                users.TotalCount, users.TotalPages);
             return Ok(usersToReturn);
         }
         [HttpGet("{id}", Name="GetUser")]
