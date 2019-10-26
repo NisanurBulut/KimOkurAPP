@@ -28,7 +28,11 @@ namespace KimOkur.API.Data
         {
             _dc.Remove(entity);
         }
-
+  public async Task<Like> GetLike(int userId, int recipientId)
+        {
+            return await _dc.Likes.FirstOrDefaultAsync(u =>
+                u.LikerId == userId && u.LikeeId == recipientId);
+        }
         public async Task<Photo> GetMainPhotoForUser(int userId)
         {
             return await _dc.Photos.Where(u => u.UserId == userId)

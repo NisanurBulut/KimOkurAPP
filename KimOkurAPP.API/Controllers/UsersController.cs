@@ -6,6 +6,7 @@ using AutoMapper;
 using KimOkur.API.Data;
 using KimOkur.API.Dtos;
 using KimOkur.API.Helpers;
+using KimOkur.API.Models;
 using KimOkurAPP.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -88,6 +89,33 @@ namespace KimOkur.API.Controllers
             if (await _repo.SaveAll())
                 return NoContent();
             throw new Exception($"{id} nolu kişinin bilgileri güncellenemedi.");
+        }
+          [HttpPost("{id}/like/{recipientId}")]
+        public async Task<IActionResult> LikeUser(int id, int recipientId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var like = await _repo.GetLike(id, recipientId);
+
+            if (like != null)
+                return BadRequest("Bu kullanıcı zaten favorileriniz arasındadır.");
+            
+            if (await _repo.GetUser(recipientId) == null)
+                return NotFound();
+
+            like = new Like
+            {
+                LikerId = id,
+                LikeeId = recipientId
+            };
+
+            _repo.Add<Like>(like);
+
+            if (await _repo.SaveAll())
+                return Ok();
+            
+            return BadRequest("İstenmeyen bir hata ile karşılaşıldı.");
         }
     }
 }
