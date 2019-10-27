@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from 'src/app/_models/User';
 import {
   Resolve,
-  Route,
   Router,
   ActivatedRouteSnapshot
 } from '@angular/router';
@@ -17,12 +16,12 @@ export class MemberListResolver implements Resolve<User[]> {
   pageSize = 5;
 
   constructor(private userService: UserService, private router: Router,
-      private alertify: AlertifyService) {}
+              private alertify: AlertifyService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
       return this.userService.getUsers(this.pageNumber, this.pageSize).pipe(
           catchError(error => {
-              this.alertify.error('Problem retrieving data');
+              this.alertify.error('Veri okunurken hata ile karşılaşıldı.');
               this.router.navigate(['/home']);
               return of(null);
           })

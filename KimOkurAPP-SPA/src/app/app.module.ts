@@ -33,6 +33,7 @@ import { MemberEditResolver } from './_resolves/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { MemberIdentityEditResolver } from './_resolves/memberIdentity-edit.resolver';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { ListsResolver } from './_resolves/lists.resolver';
 
 
 export function tokenGetter() {
@@ -62,13 +63,12 @@ export class CustomHammerConfig extends HammerGestureConfig  {
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot() ,
-    TabsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
@@ -83,6 +83,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
   ],
   providers: [
     AuthService,
+    PreventUnsavedChangesGuard,
     ErrorInterceptorProvider,
     AlertifyService,
     AuthGuard,
@@ -91,8 +92,9 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberListResolver,
     MemberEditResolver,
     MemberIdentityEditResolver,
-    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
-    PreventUnsavedChangesGuard
+    ListsResolver,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+   
   ],
   bootstrap: [AppComponent]
 })
