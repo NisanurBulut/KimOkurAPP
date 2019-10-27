@@ -61,12 +61,23 @@ namespace KimOkur.API.Data
 
             users = users.Where(u => u.Gender == userParams.Gender);
 
+            if(userParams.Likees)
+            {
+                var userLikers=await GetUserLikes(userParams.UserId,userParams.Likers);
+                users=users.Where(u=>userLikers.Contains(u.Id));
+            }
+            if(userParams.Likers)
+            {
+                var userLikees=await GetUserLikes(userParams.UserId,userParams.Likees);
+                 users= users.Where(u=>userLikees.Contains(u.Id));
+            }
+
             if (userParams.MinAge != 18 || userParams.MaxAge != 99)
             {
-                var minDog = DateTime.Today.AddYears(-userParams.MaxAge - 1);
-                var maxDog = DateTime.Today.AddYears(-userParams.MinAge);
+                var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+                var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
 
-                users = users.Where(u => u.DateOfBirth >= minDog && u.DateOfBirth <= maxDog);
+                users = users.Where(u => u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob);
             }
 
             if (!string.IsNullOrEmpty(userParams.OrderBy))
@@ -83,7 +94,21 @@ namespace KimOkur.API.Data
             }
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
+        private async Task<IEnumerable<int>> GetUserLikes(int id, bool likers)
+        {
+            var user = await _dc.Users
+            .Include(a=>a.Likees)
+            .Include(a=>a.Likers).FirstOrDefaultAsync(u => u.Id == id);
 
+            if (likers)
+            {
+                return user.Likers.Where(u => u.LikerId == id).Select(i => i.LikerId);
+            }
+            else
+            {
+                return user.Likees.Where(u => u.LikeeId == id).Select(i => i.LikeeId);
+            }
+        }
         public async Task<bool> SaveAll()
         {
             return await _dc.SaveChangesAsync() > 0;
