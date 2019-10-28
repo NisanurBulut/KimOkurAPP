@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KimOkur.API.Data;
 using KimOkur.API.Models;
+using KimOkurAPP.API;
 using KimOkurAPP.API.Helpers;
 using Microsoft.EntityFrameworkCore;
 
@@ -112,6 +113,21 @@ namespace KimOkur.API.Data
         public async Task<bool> SaveAll()
         {
             return await _dc.SaveChangesAsync() > 0;
+        }
+
+        public async Task<Message> GetMessage(int id)
+        {
+           return await _dc.Messages.FirstOrDefaultAsync(m =>m.Id==id);
+        }
+
+        public Task<PagedList<Message>> GetMessagesForUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
