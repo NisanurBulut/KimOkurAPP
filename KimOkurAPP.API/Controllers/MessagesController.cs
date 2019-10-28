@@ -50,8 +50,9 @@ namespace KimOkurAPP.API.Controllers
                 return BadRequest("Kullanıcı bulunamadı.");
             var message = _mapper.Map<Message>(messageforCreationDto);
             _repo.Add(message);
+            var messageToReturn=_mapper.Map<MessageForCreationDto>(message);
             if (await _repo.SaveAll())
-                return CreatedAtRoute("GetMessage", new { id = message.Id }, message);
+                return CreatedAtRoute("GetMessage", new { id = message.Id }, messageToReturn);
             throw new Exception("Mesaj oluşturma işlemi başarısız oldu.");
  
         }
