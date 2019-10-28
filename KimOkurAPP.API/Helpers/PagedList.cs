@@ -8,15 +8,15 @@ namespace KimOkurAPP.API.Helpers
 {
     public class PagedList<T> : List<T>
     {
-        public PagedList(List<T> items, int cPage, int pSize, int tcount)
+        public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {
-            TotalPages = (int)Math.Ceiling(tcount / (double)PageSize);
-            currentPage = cPage;
-            PageSize = pSize;
-            TotalCount = tcount;
+            TotalPages = (int)Math.Ceiling(count / (double)PageSize);
+            CurrentPage = pageNumber;
+            PageSize = pageSize;
+            TotalCount = count;
             this.AddRange(items);
         }
-        public int currentPage { get; set; }
+        public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
         public int PageSize { get; set; }
         public int TotalCount { get; set; }

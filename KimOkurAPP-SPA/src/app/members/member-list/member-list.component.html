@@ -1,12 +1,8 @@
-
-
 <div class="text-center mt-3">
-  <h2>Your matches - {{pagination.totalItems}} found</h2>
+  <h2>Filtreleme kriterleri içinde - {{pagination.totalItems}} bulundu</h2>
 </div>
-
-
 <div class="container mt-3">
-    <form class="form-inline" #form="ngForm" (ngSunmit)="loadUsers()" novalidate>
+    <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
         <div class="form-group">
           <label for="minAge">Min Yaş</label>
           <input type="number" class="form-control ml-1" style="width: 70px" id="minAge"
@@ -48,7 +44,7 @@
     [totalItems]="pagination.totalItems"
     [(ngModel)]="pagination.currentPage"
     [itemsPerPage]="pagination.itemsPerPage"
-    (pageChanged)="changePage($event)"
+    (pageChanged)="pageChanged($event)"
   previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
   </pagination>

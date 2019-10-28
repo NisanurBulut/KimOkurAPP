@@ -17,12 +17,12 @@ export class MemberListComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user'));
 
+  userParams: any = {};
+
   genderList = [
     { value: 'erkek', display: 'Erkekler' },
     { value: 'kadin', display: 'Kadınlar' }
   ];
-
-  userParams: any = {};
 
   constructor(
     private userService: UserService,
@@ -42,7 +42,7 @@ export class MemberListComponent implements OnInit {
     this.userParams.orderby='lastActive';
   }
  
-  changePage(event: any): void {
+  pageChanged(event: any): void {
   
     this.pagination.currentPage = event.page;
     this.loadUsers();

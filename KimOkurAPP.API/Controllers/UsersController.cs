@@ -37,11 +37,11 @@ namespace KimOkur.API.Controllers
 
             if (string.IsNullOrEmpty(userParams.Gender))
             {
-                userParams.Gender = userFromrepo.Gender=="kadin"?"erkek":"kadin";
+                userParams.Gender = userFromrepo.Gender=="erkek"?"kadin":"erkek";
             }
             var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListForDto>>(users);
-            Response.AddPagination(users.currentPage, users.PageSize,
+            Response.AddPagination(users.CurrentPage, users.PageSize,
                 users.TotalCount, users.TotalPages);
             return Ok(usersToReturn);
         }
