@@ -1,5 +1,5 @@
 using KimOkur.API.Models;
-using KimOkurAPP.API;
+using KimOkurAPP.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace KimOkur.API.Data

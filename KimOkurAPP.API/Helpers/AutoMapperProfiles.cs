@@ -3,6 +3,7 @@ using KimOkur.API.Models;
 using KimOkur.API.Dtos;
 using System.Linq;
 using KimOkurAPP.API.Dtos;
+using KimOkurAPP.API.Models;
 
 namespace KimOkur.API.Helpers
 {
@@ -29,6 +30,7 @@ namespace KimOkur.API.Helpers
             CreateMap<Photo,PhotoForReturnDto>();
             CreateMap<PhotoForReturnDto,Photo>();
             CreateMap<UserForRegisterDto,User>();
+            CreateMap<MessageForCreationDto,Message>();
         }
     }
 }

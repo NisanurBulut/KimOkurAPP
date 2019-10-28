@@ -1,7 +1,7 @@
 using System;
 using KimOkur.API.Models;
 
-namespace KimOkurAPP.API{
+namespace KimOkurAPP.API.Models{
     public class Message{
         public int Id { get; set; } 
         public int SenderId { get; set; }   

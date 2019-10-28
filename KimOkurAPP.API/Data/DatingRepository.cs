@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KimOkur.API.Data;
 using KimOkur.API.Models;
-using KimOkurAPP.API;
 using KimOkurAPP.API.Helpers;
+using KimOkurAPP.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace KimOkur.API.Data

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using KimOkur.API.Models;
 using KimOkurAPP.API;
 using KimOkurAPP.API.Helpers;
+using KimOkurAPP.API.Models;
 
 namespace KimOkur.API.Data
 {
