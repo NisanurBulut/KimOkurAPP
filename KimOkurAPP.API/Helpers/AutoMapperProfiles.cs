@@ -30,7 +30,7 @@ namespace KimOkur.API.Helpers
             CreateMap<Photo,PhotoForReturnDto>();
             CreateMap<PhotoForReturnDto,Photo>();
             CreateMap<UserForRegisterDto,User>();
-            CreateMap<MessageForCreationDto,Message>();
+            CreateMap<MessageForCreationDto,Message>().ReverseMap();
         }
     }
 }
