@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using KimOkurAPP.API;
+using KimOkurAPP.API.Models;
 
 namespace KimOkur.API.Models
 {
