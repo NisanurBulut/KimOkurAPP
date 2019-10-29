@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using KimOkur.API.Data;
+using KimOkur.API.Helpers;
 using KimOkurAPP.API.Dtos;
 using KimOkurAPP.API.Helpers;
 using KimOkurAPP.API.Models;
@@ -38,8 +40,24 @@ namespace KimOkurAPP.API.Controllers
 
             return Ok(messageFromRepo);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetMessagesForUser(int userId,MessageParams messageParams){
+             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            
+            messageParams.UserId=userId;
+
+            var messagesFromRepo= await _repo.GetMessagesForUser(messageParams);
+
+            var messages=_mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
+
+            Response.AddPagination(messagesFromRepo.CurrentPage,messagesFromRepo.PageSize,
+            messagesFromRepo.TotalCount,messagesFromRepo.TotalPages);
+
+            return Ok(messages);
+        }
         [HttpPost]
-        public async Task<IActionResult> CreateMessage(int userId, MessageForCreationDto messageforCreationDto)
+        public async Task<IActionResult> CreateMessage(int userId,[FromQuery] MessageForCreationDto messageforCreationDto)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
