@@ -20,13 +20,12 @@ export class MemberDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   constructor(
     private userService: UserService,
-    private alertift: AlertifyService,
+    private alertify: AlertifyService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    // tslint:disable-next-line: no-unused-expression
-   
+    
     this.route.data.subscribe(data => {
       //typescript type sever
       this.user = data['user'];
@@ -63,7 +62,7 @@ export class MemberDetailComponent implements OnInit {
         this.user = user;
       },
       error => {
-        this.alertift.error(error);
+        this.alertify.error(error);
       }
     );
   }

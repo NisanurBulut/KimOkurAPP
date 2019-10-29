@@ -4,6 +4,7 @@ import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from 'src/app/_models/Pagination';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-member-list',
@@ -62,6 +63,8 @@ export class MemberListComponent implements OnInit {
         (res: PaginatedResult<User[]>) => {
           this.users = res.result;
           this.pagination = res.pagination;
+          console.log("users",this.users);
+          console.log('pagination',this.pagination);
         },
         error => {
           this.alertify.error(error);
