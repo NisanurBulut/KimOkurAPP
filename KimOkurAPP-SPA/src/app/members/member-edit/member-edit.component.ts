@@ -40,13 +40,14 @@ export class MemberEditComponent implements OnInit {
     };
 
     this.route.data.subscribe(data => {
-      this.user = data['user'];
+      this.user = data['user'];  
     });
 
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
 
     this.route.data.subscribe(data => {
       this.userIdentity = data['userIdentity'];
+      console.log(this.userIdentity);
     });
 
   }

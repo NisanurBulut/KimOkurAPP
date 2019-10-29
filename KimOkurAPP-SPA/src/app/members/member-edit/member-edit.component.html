@@ -53,7 +53,7 @@
                                             <label for="username">Kullanıcı Adı</label>
                                             <input name="username" type="text" class="form-control text m-2" [(ngModel)]="userIdentity.username">
                                             <label for="dateOfBirth">Doğum Tarihi</label>
-                                            <input name="dateOfBirth" type="text" bsDatepicker [bsConfig]="bsConfig" class="form-control  m-2" [(ngModel)]="userIdentity.dateOfBirth">
+                                            <input name="dateOfBirth" type="text" bsDatepicker [bsConfig]="bsConfig" [(bsValue)]="userIdentity.dateOfBirth" class="form-control  m-2" [(ngModel)]="userIdentity.dateOfBirth">
                                             <label for="city">Şehir</label>
                                             <input name="city" type="text" class="form-control text m-2" [(ngModel)]="userIdentity.city">
                                             <label for="country">Ülke</label>
