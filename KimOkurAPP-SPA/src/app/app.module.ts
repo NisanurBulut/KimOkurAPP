@@ -34,6 +34,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
 import { MemberIdentityEditResolver } from './_resolves/memberIdentity-edit.resolver';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { ListsResolver } from './_resolves/lists.resolver';
+import { MessagesResolver } from './_resolves/messages.resolver';
 
 
 export function tokenGetter() {
@@ -93,6 +94,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberEditResolver,
     MemberIdentityEditResolver,
     ListsResolver,
+    MessagesResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
    
   ],
