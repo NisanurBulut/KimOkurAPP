@@ -46,7 +46,8 @@
                         <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
                     </tab>
                     <tab heading="Yazışmalar">
-                        <h4>Yazışmalar burada yer alacak</h4>      
+                        <!-- membermessageconponente input olarak recipientId değerini verir -->
+                       <app-member-messages [recipientId]="user.id"></app-member-messages>    
                     </tab>
                 </tabset>
 
