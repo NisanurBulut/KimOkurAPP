@@ -6,8 +6,8 @@ import { User } from '../_models/User';
 import { UserIdentity } from '../_models/UserIdentity';
 import { PaginatedResult } from '../_models/Pagination';
 import { map } from 'rxjs/operators';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { JsonPipe } from '@angular/common';
+import { Message } from '../_models/Message';
+
 
 @Injectable({
   providedIn: 'root'
@@ -86,7 +86,9 @@ export class UserService {
   }
   getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
     const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
+
     let params = new HttpParams();
+
     params = params.append('MessageContainer', messageContainer);
 
     if (page != null && itemsPerPage != null) {
@@ -94,13 +96,14 @@ export class UserService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params })
+    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', {observe: 'response', params})
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
           if (response.headers.get('Pagination') !== null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
+
           return paginatedResult;
         })
       );
