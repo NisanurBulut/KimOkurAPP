@@ -22,9 +22,10 @@ export class MessagesResolver implements Resolve<Message[]> {
               private alertify: AlertifyService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Message[]> {
-    return this.userService.getMessages(this.authService.decodedToken.nameid, this.pageNumber, this.pageSize).pipe(
+    return this.userService.getMessages(this.authService.decodedToken.nameid,
+      this.pageNumber, this.pageSize, this.messageContainer).pipe(
       catchError(error => {
-        this.alertify.error('Veri okunurken hata ile karşılaşıldı.');
+        this.alertify.error('Mesajlar okunurken hata ile karşılaşıldı.');
         this.router.navigate(['/home']);
         return of(null);
       })
