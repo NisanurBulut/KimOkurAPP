@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import {
   Resolve,
   Router,
@@ -9,8 +8,8 @@ import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { AuthService } from '../_services/auth.service';
+import { Message } from '../_models/Message';
 
 @Injectable()
 export class MessagesResolver implements Resolve<Message[]> {
