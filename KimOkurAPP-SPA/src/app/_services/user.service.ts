@@ -6,6 +6,8 @@ import { User } from '../_models/User';
 import { UserIdentity } from '../_models/UserIdentity';
 import { PaginatedResult } from '../_models/Pagination';
 import { map } from 'rxjs/operators';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +15,9 @@ import { map } from 'rxjs/operators';
 export class UserService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   // sayfalama için httpparams kullanılır
-  
+
   getUsers(page?, itemsPerPage?, userParams?, likesParam?): Observable<PaginatedResult<User[]>> {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
 
@@ -39,17 +41,17 @@ export class UserService {
     if (likesParam === 'Likees') {
       params = params.append('likees', 'true');
     }
-    return this.http.get<User[]>(this.baseUrl + 'users', {observe: 'response', params})
-    .pipe(
-      map(response => {
-        paginatedResult.result = response.body;
-        if (response.headers.get('Pagination') != null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-        }
-        console.log(paginatedResult);
-        return paginatedResult;
-      })
-    );
+    return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          console.log(paginatedResult);
+          return paginatedResult;
+        })
+      );
   }
 
 
@@ -81,5 +83,26 @@ export class UserService {
   }
   sendLike(id: number, recipentId: number) {
     return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipentId, {});
+  }
+  getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
+    const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
+    let params = new HttpParams();
+    params = params.append('MessageContainer', messageContainer);
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') !== null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
   }
 }
