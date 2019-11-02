@@ -35,6 +35,7 @@ import { MemberIdentityEditResolver } from './_resolves/memberIdentity-edit.reso
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { ListsResolver } from './_resolves/lists.resolver';
 import { MessagesResolver } from './_resolves/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 export function tokenGetter() {
@@ -58,6 +59,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
+    MemberMessagesComponent,
     PhotoEditorComponent,
     TimeAgoPipe
   ],
