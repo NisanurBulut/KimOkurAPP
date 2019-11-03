@@ -68,18 +68,24 @@ namespace KimOkurAPP.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMessage(int userId,[FromQuery] MessageForCreationDto messageforCreationDto)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
+            var sender = await _repo.GetUser(userId);
 
+            if (sender.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            
             messageforCreationDto.SenderId = userId;
             var recipient = await _repo.GetUser(messageforCreationDto.RecipientId);
             if (recipient == null)
                 return BadRequest("Kullanıcı bulunamadı.");
             var message = _mapper.Map<Message>(messageforCreationDto);
             _repo.Add(message);
-            var messageToReturn=_mapper.Map<MessageForCreationDto>(message);
+
             if (await _repo.SaveAll())
+            {
+                var messageToReturn = _mapper.Map<MessageToReturnDto>(message);
                 return CreatedAtRoute("GetMessage", new { id = message.Id }, messageToReturn);
+            }
+
             throw new Exception("Mesaj oluşturma işlemi başarısız oldu.");
  
         }
