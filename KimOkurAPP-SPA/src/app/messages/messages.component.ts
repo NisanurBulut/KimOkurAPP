@@ -14,6 +14,7 @@ import { Message } from '../_models/Message';
 })
 export class MessagesComponent implements OnInit {
   messages: Message[];
+
   pagination: Pagination;
   messageContainer: 'Unread';
   constructor(private userService: UserService,

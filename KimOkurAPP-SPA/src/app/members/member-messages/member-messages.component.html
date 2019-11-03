@@ -42,11 +42,16 @@
         </ul>
     </div>
     <div class="card-footer">
-      <form action="">
+      <form  #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage()">
         <div class="input-group">
-          <input type="text" class="form-control input-sm" placeholder="Mesaj yazın...">
+          <input type="text" 
+          [(ngModel)]="newMessage.content"
+          name="content"
+          required
+          class="form-control input-sm" 
+          placeholder="Mesaj yazın...">
           <div class="input-group-append">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" [disabled]="!messageForm.valid">
               Gönder
             </button>
           </div>
