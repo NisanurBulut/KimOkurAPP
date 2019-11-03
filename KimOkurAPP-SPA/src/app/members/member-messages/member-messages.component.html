@@ -1,3 +1,56 @@
-<p *ngFor="let message of messages">
-{{message.content}}
-</p>
+<div class="card">
+    <div class="card-body">
+        <div *ngIf="messages.length===0">
+            <p>mesaj bulunamadı.</p>
+        </div>
+        <ul class="chat">
+<li *ngFor="let message of messages">
+    <!-- to them -->
+    <div *ngIf="message.senderId == recipientId">
+        <span class="chat-img float-left">
+          <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">
+        </span>
+        <div class="chat-body">
+          <div class="header">
+            <strong class="primary-font">{{message.senderKnownAs}}</strong>
+            <small class="text-muted float-right">
+              <span class="fa fa-clock-o">{{message.messageSent | timeAgo}}</span>
+            </small>
+          </div>
+          <p>{{message.content}}</p>
+        </div>
+      </div>
+<!-- Bana gelen mesjalar -->
+      <div *ngIf="message.senderId != recipientId">
+        <span class="chat-img float-left">
+          <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">
+        </span>
+        <div class="chat-body">
+          <div class="header">
+                <small class="text-muted">
+                        <span class="fa fa-clock-o">{{message.messageSent | timeAgo}}</span>
+                        <span *ngIf="!message.isRead" class="text-danger">(Okunmadı)</span>
+                        <span *ngIf="message.isRead" class="text-success">(Okundu {{message.dateRead | timeAgo}})</span>
+                      </small>
+            <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
+           
+          </div>
+          <p>{{message.content}}</p>
+        </div>
+      </div>
+</li>
+        </ul>
+    </div>
+    <div class="card-footer">
+      <form action="">
+        <div class="input-group">
+          <input type="text" class="form-control input-sm" placeholder="Mesaj yazın...">
+          <div class="input-group-append">
+            <button class="btn btn-primary">
+              Gönder
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
