@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Pagination, PaginatedResult } from '../_models/Pagination';
-import { UserService } from '../_services/user.service';
-import { AuthService } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { AlertifyService } from '../_services/alertify.service';
 import { Message } from '../_models/Message';
+import { PaginatedResult, Pagination } from '../_models/Pagination';
+import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
+import { UserService } from '../_services/user.service';
+
 
 @Component({
   selector: 'app-messages',
@@ -17,11 +17,12 @@ export class MessagesComponent implements OnInit {
 
   pagination: Pagination;
   messageContainer: 'Unread';
-  constructor(private userService: UserService,
-              private authService: AuthService, private route: ActivatedRoute,
-              private alertifyService: AlertifyService) {
-
-  }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private alertifyService: AlertifyService
+  ) {}
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -29,20 +30,48 @@ export class MessagesComponent implements OnInit {
       this.pagination = data['messages'].pagination;
     });
   }
- 
+
   loadMessages() {
-    this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage,
-      this.pagination.itemsPerPage, this.messageContainer)
-      .subscribe((res: PaginatedResult<Message[]>) => {
-        this.messages = res.result;
-        this.pagination = res.pagination;
-      }, error => {
-        this.alertifyService.error(error);
-      });
+    this.userService
+      .getMessages(
+        this.authService.decodedToken.nameid,
+        this.pagination.currentPage,
+        this.pagination.itemsPerPage,
+        this.messageContainer
+      )
+      .subscribe(
+        (res: PaginatedResult<Message[]>) => {
+          this.messages = res.result;
+          this.pagination = res.pagination;
+        },
+        error => {
+          this.alertifyService.error(error);
+        }
+      );
   }
   pageChanged(event: any) {
     this.pagination.currentPage = event.page;
     this.loadMessages();
   }
-
+  deleteMessage(id: number) {
+    this.alertifyService.confirm(
+      'İletiyi silmek istediğinizden emin misiniz ?',
+      () => {
+        this.userService
+          .deleteMessage(id, this.authService.decodedToken.nameid)
+          .subscribe(
+            () => {
+              this.messages.splice(
+                this.messages.findIndex(m => m.id === id),
+                1
+              );
+              this.alertifyService.success('İleti başarıyla silindi.');
+            },
+            error => {
+              this.alertifyService.error(error);
+            }
+          );
+      }
+    );
+  }
 }
