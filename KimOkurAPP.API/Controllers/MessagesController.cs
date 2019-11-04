@@ -107,5 +107,20 @@ namespace KimOkurAPP.API.Controllers
 
             throw new Exception("Mesaj silinerken bir hata ile karşılaşıldı");
         }
+        [HttpPost("{id}/read")]
+        public async Task<IActionResult> MarkMessageAsRead(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var messageFromRepo = await _repo.GetMessage(id);
+            if (messageFromRepo.RecipientId != userId)
+                return Unauthorized();
+            messageFromRepo.IsRead = true;
+            messageFromRepo.DateRead = DateTime.Now;
+
+            await _repo.SaveAll();
+            return NoContent();
+        }
+
     }
 }
