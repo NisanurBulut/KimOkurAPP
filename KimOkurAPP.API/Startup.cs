@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -30,8 +31,8 @@ namespace KimOkur.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            .AddJsonOptions(opt=>{
+            services.AddControllers()
+            .AddNewtonsoftJson(opt=>{
                 opt.SerializerSettings.ReferenceLoopHandling=
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
@@ -56,7 +57,7 @@ namespace KimOkur.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -84,17 +85,17 @@ namespace KimOkur.API
 
             // app.UseHttpsRedirection();
             // seeder.SeedUsers();
+            app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
+            app.UseAuthorization();
             // app.UseDefaultFiles();
             // app.UseStaticFiles();
-            app.UseMvc();
-            // app.UseMvc(routes=>{
-            //     routes.MapSpaFallbackRoute(
-            //         name:"spa-fallback",
-            //         defaults:new {controller="Fallback",action="Index"}
-            //     );
-            // });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                // endpoints.MapFallbackToController("Index", "Fallback");
+            });
         }
     }
 }
