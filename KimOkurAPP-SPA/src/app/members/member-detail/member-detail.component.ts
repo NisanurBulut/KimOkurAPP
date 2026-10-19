@@ -7,8 +7,8 @@ import {
   NgxGalleryOptions,
   NgxGalleryImage,
   NgxGalleryAnimation
-} from 'ngx-gallery';
-import { TabsetComponent } from 'ngx-bootstrap';
+} from '@kolkov/ngx-gallery';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-member-detail',
