@@ -1,5 +1,5 @@
 ﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+# Visual Studio / VS Code yerel dosyalari (her seviyedeki klasoru kapsar)
 ################################################################################
-
-/.vs
+.vs/
+.vscode/
