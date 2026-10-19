@@ -1,7 +1,8 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
+.vs/
+.vscode/
 /KimOkurAPP.API/.vs
 /.vs/CopilotSnapshots/9679E0FDA25099439C88FFB567931354
 /.vscode/launch.json

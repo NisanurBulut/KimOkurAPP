@@ -76,7 +76,7 @@ namespace KimOkur.API.Controllers
                     uploadResult = _cloudinary.Upload(uploadParams);
                 }
             }
-            PhotoForCreationDto.Url = uploadResult.Uri.ToString();
+            PhotoForCreationDto.Url = uploadResult.Url.ToString();
             PhotoForCreationDto.PublicId = uploadResult.PublicId;
             PhotoForCreationDto.DateAdded = DateTime.Now;
             //Mapping
