@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
-  user: User;//Kaydolacak kullanıcının bilgilerini tutar
+  user: User; // Kaydolacak kullanıcının bilgilerini tutar
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     this.createRegisterForm();
   }
   passwordMatchValidator(g: FormGroup) {
-    return g.get('password').value === g.get('confirmPassword').value ? null : { 'nomatch': true };
+    return g.get('password').value === g.get('confirmPassword').value ? null : { nomatch: true };
   }
   register() {
     if (this.registerForm.valid) {

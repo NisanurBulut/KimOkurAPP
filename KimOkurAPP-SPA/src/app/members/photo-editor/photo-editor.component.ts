@@ -13,8 +13,8 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
-  //emitter ile fotoğraf değişiminin ardından ekranın refresh edilmeis sağlanır.
-  @Output() getProfilePhotoChanged = new EventEmitter<string>(); //foto url
+  // emitter ile fotoğraf değişiminin ardından ekranın refresh edilmeis sağlanır.
+  @Output() getProfilePhotoChanged = new EventEmitter<string>(); // foto url
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -61,7 +61,7 @@ export class PhotoEditorComponent implements OnInit {
       allowedFileType: ['image'],
       removeAfterUpload: true,
       autoUpload: false,
-      maxFileSize: 10 * 1024 * 1024 //10MB
+      maxFileSize: 10 * 1024 * 1024 // 10MB
     });
 
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
@@ -75,7 +75,7 @@ export class PhotoEditorComponent implements OnInit {
           description: res.description,
           isMain: res.isMain
         };
-        //push sayesinde mini galeride goruntulenır
+        // push sayesinde mini galeride goruntulenır
         this.photos.push(photo);
         if (photo.isMain) {
           this.authService.changeUserPhoto(photo.url);
