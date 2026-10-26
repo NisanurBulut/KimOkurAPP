@@ -1,18 +1,19 @@
 ﻿using KimOkur.API.Data;
+using KimOkur.API.Helpers;
+using KimOkurAPP.API.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Scalar.AspNetCore;
 using System.Net;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Diagnostics;
-using KimOkur.API.Helpers;
-using KimOkurAPP.API.Helpers;
+using System.Text;
 
 namespace KimOkur.API
 {
@@ -93,6 +94,11 @@ namespace KimOkur.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                if (env.IsDevelopment())
+                {
+                    endpoints.MapOpenApi();               // /openapi/v1.json
+                    endpoints.MapScalarApiReference();    // /scalar/v1
+                }
                 // endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
