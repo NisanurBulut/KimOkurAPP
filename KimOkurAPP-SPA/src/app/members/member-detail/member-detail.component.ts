@@ -29,7 +29,7 @@ export class MemberDetailComponent implements OnInit {
   ngOnInit() {
 
     this.route.data.subscribe(data => {
-      //typescript type sever
+      // typescript type sever
       this.user = data['user'];
     });
     this.route.queryParams.subscribe(params => {
@@ -62,7 +62,7 @@ export class MemberDetailComponent implements OnInit {
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
   }
-  //member/4
+  // member/4
   loadUser() {
     this.userService.getUser(this.route.snapshot.params['id']).subscribe(
       (user: User) => {

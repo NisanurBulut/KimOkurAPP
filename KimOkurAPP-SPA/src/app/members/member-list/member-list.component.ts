@@ -36,15 +36,15 @@ export class MemberListComponent implements OnInit {
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;
     });
-    
+
     this.userParams.gender = this.user.gender === 'kadin' ? 'erkek' : 'kadin';
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
-    this.userParams.orderby='lastActive';
+    this.userParams.orderby = 'lastActive';
   }
- 
+
   pageChanged(event: any): void {
-  
+
     this.pagination.currentPage = event.page;
     this.loadUsers();
   }
@@ -58,13 +58,13 @@ export class MemberListComponent implements OnInit {
   }
   loadUsers() {
     this.userService
-      .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage,this.userParams)
+      .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams)
       .subscribe(
         (res: PaginatedResult<User[]>) => {
           this.users = res.result;
           this.pagination = res.pagination;
-          console.log("users",this.users);
-          console.log('pagination',this.pagination);
+          console.log('users', this.users);
+          console.log('pagination', this.pagination);
         },
         error => {
           this.alertify.error(error);
