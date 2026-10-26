@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "DatingAPP-SPA": {
+    "KimOkurAPP-SPA": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -43,7 +43,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -66,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DatingAPP-SPA:build"
+            "browserTarget": "KimOkurAPP-SPA:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "DatingAPP-SPA:build:production"
+              "browserTarget": "KimOkurAPP-SPA:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "DatingAPP-SPA:build"
+            "browserTarget": "KimOkurAPP-SPA:build"
           }
         },
         "test": {
@@ -114,15 +113,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "DatingAPP-SPA:serve"
+            "devServerTarget": "KimOkurAPP-SPA:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "DatingAPP-SPA:serve:production"
+              "devServerTarget": "KimOkurAPP-SPA:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "DatingAPP-SPA"
+  "defaultProject": "KimOkurAPP-SPA"
 }
