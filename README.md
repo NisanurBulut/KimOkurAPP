@@ -5,14 +5,14 @@
 
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Web%20API-5C2D91?logo=dotnet&logoColor=white)
-![Angular](https://img.shields.io/badge/Angular-9-DD0031?logo=angular&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3.8-3178C6?logo=typescript&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-10-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.0-3178C6?logo=typescript&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-EF%20Core-003B57?logo=sqlite&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white)
 ![OpenAPI](https://img.shields.io/badge/API%20docs-OpenAPI%20%2B%20Scalar-6366F1?logo=openapiinitiative&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Media-Cloudinary-3448C5?logo=cloudinary&logoColor=white)
 
-**Kim Okur?** ("Who reads?") lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API (.NET 10)**, the front end is an **Angular 9 SPA**. Authentication uses **JWT**, images are stored on **Cloudinary**, and the API is documented with **OpenAPI** and browsable through **Scalar**.
+**Kim Okur?** ("Who reads?") lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API (.NET 10)**, the front end is an **Angular 10 SPA**. Authentication uses **JWT**, images are stored on **Cloudinary**, and the API is documented with **OpenAPI** and browsable through **Scalar**.
 
 > The application UI is in Turkish; code, API and documentation are in English.
 
@@ -62,7 +62,7 @@
 | **Database** | SQLite (EF Core migrations) |
 | **Authentication** | JWT Bearer, HMAC-SHA512 password hashing |
 | **Media** | Cloudinary (CloudinaryDotNet) |
-| **Frontend** | Angular 9 (Ivy), TypeScript 3.8, RxJS 6, ngx-bootstrap 5, Bootswatch/Bootstrap 4, @kolkov/ngx-gallery, ng2-file-upload, AlertifyJS |
+| **Frontend** | Angular 10 (Ivy), TypeScript 4.0, RxJS 6, ngx-bootstrap 5, Bootswatch/Bootstrap 4, @kolkov/ngx-gallery, ng2-file-upload, AlertifyJS |
 | **CI/CD** | GitHub Actions (build + test + lint, automatic labelling and releases, PR assignment) |
 
 ---
@@ -73,7 +73,7 @@ The SPA talks to the API over REST/JSON and sends a JWT with every request. The 
 
 ```mermaid
 flowchart LR
-    subgraph SPA["Angular 9 SPA"]
+    subgraph SPA["Angular 10 SPA"]
         direction TB
         CMP["Components"] --> SRV["Services<br/>Auth / User / Alertify"]
         RES["Route Resolvers"] --> SRV
@@ -318,14 +318,14 @@ Both are mapped only when `ASPNETCORE_ENVIRONMENT=Development`. All endpoints ex
 - **Action filter:** `LogUserActivity` updates the user's last-active time on every authorized request.
 - **Self-documenting API:** runtime-generated OpenAPI document and a Scalar UI, enabled in development only.
 - **Angular patterns:** route **resolvers** pre-load data, **guards** block unauthorized access and unsaved-changes loss, a central **HTTP error interceptor** handles failures.
-- **Modernization:** migrated **.NET Core 2.2 → .NET 10** and **Angular 8 → 9**, with a step-by-step upgrade path toward Angular 22. Packages incompatible with Ivy were replaced (ngx-bootstrap 5, `@kolkov/ngx-gallery`, a local `timeAgo` pipe).
+- **Modernization:** migrated **.NET Core 2.2 → .NET 10** and **Angular 8 → 10**, with a step-by-step upgrade path toward Angular 22. Packages incompatible with Ivy were replaced (ngx-bootstrap 5, `@kolkov/ngx-gallery`, a local `timeAgo` pipe).
 - **CI/CD (GitHub Actions):** `npm ci` → `lint` → `test` → `build` workflow for the SPA; PRs are labelled by branch name, a release/tag is created automatically on merge to `master`, and the PR author and merger are assigned automatically.
 
 ---
 
 ## 🚀 Getting Started
 
-**Requirements:** .NET 10 SDK and Node.js **12–14** (Angular 9 / webpack 4 requirement; `nvm use 14` is recommended).
+**Requirements:** .NET 10 SDK and Node.js **12–14** (Angular 10 / webpack 4 requirement; `nvm use 14` is recommended).
 
 ### 1) API
 
@@ -374,7 +374,7 @@ KimOkurAPP
 
 ## 🛣️ Roadmap
 
-- [ ] Angular 9 → 22 upgrade (one major version at a time)
+- [ ] Angular 10 → 22 upgrade (one major version at a time)
 - [ ] Fix the `MessagesController` route conflict so sending and deleting messages works
 - [ ] Fix the SPA tests and `lint` errors (get CI green) and add the production `environment` settings
 - [ ] Backend unit and integration tests (xUnit + `WebApplicationFactory`) and `dotnet build/test` in CI
