@@ -1,7 +1,7 @@
 # 📚 Kim Okur?
 
-> **Okurların birbirini keşfettiği, beğendiği ve mesajlaştığı tam yığın (full-stack) sosyal platform.**
-> *A full-stack social platform where readers discover, like and message each other — built with ASP.NET Core and Angular.*
+> **A full-stack social platform where readers discover, like and message each other.**
+> Built with **ASP.NET Core (.NET 10)** and **Angular**, secured with **JWT**, documented with **OpenAPI + Scalar**.
 
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Web%20API-5C2D91?logo=dotnet&logoColor=white)
@@ -9,62 +9,67 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3.8-3178C6?logo=typescript&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-EF%20Core-003B57?logo=sqlite&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white)
+![OpenAPI](https://img.shields.io/badge/API%20docs-OpenAPI%20%2B%20Scalar-6366F1?logo=openapiinitiative&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Media-Cloudinary-3448C5?logo=cloudinary&logoColor=white)
 
-**Kim Okur?**, kayıt olan okurların profil oluşturup fotoğraf yükleyebildiği, filtreleyerek diğer okurları keşfedebildiği, beğenebildiği ve birbirine mesaj gönderebildiği bir web uygulamasıdır. Arka uçta **ASP.NET Core Web API (.NET 10)**, ön yüzde **Angular 9 SPA** bulunur; kimlik doğrulama **JWT**, görsel depolama **Cloudinary** ile yapılır.
+**Kim Okur?** ("Who reads?") lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API (.NET 10)**, the front end is an **Angular 9 SPA**. Authentication uses **JWT**, images are stored on **Cloudinary**, and the API is documented with **OpenAPI** and browsable through **Scalar**.
+
+> The application UI is in Turkish; code, API and documentation are in English.
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-| Alan | Neler var? |
+| Area | What it does |
 |---|---|
-| **Üyelik & Güvenlik** | Kayıt formu (doğrulamalı, şifre tekrarı), JWT ile oturum, korumalı sayfalar (`AuthGuard`), şifreler HMAC-SHA512 + salt ile hash'lenir |
-| **Okurları Keşfet** | Cinsiyete göre varsayılan eşleşme listesi, **yaş aralığı** filtresi, "Aktif zaman / Yeni üyeler" sıralaması, **sayfalama** |
-| **Okur Profili** | Sekmeli detay sayfası (Hakkında, İlgilendikleri, Fotoğrafları, Yazışmalar), fotoğraf **galerisi**, **Beğen** ve **Hemen yaz** aksiyonları |
-| **Profil Düzenleme** | Kullanıcı/profil bilgileri, kaydedilmemiş değişiklik uyarısı (`PreventUnsavedChangesGuard`) |
-| **Fotoğraf Yönetimi** | Sürükle-bırak / çoklu yükleme, profil fotoğrafı seçme, silme (onay penceresiyle); yüz algılamalı 500×500 kırpma (Cloudinary) |
-| **Listem** | Favori listesi: "Favorilediklerim" / "Favorilendiklerim", sayfalı |
-| **Mesajlaşma** | Okunmamış / Gelen / Giden kutuları, konuşma akışı, okundu işaretleme, **soft-delete** (iki taraf da silince kayıt kalkar), göreli zaman gösterimi (`timeAgo` pipe) |
+| **Accounts & security** | Registration form with validation and password confirmation, JWT sessions, protected routes (`AuthGuard`), passwords hashed with HMAC-SHA512 + salt |
+| **Discover readers** | Opposite-gender matches by default, **age range** filter, "Last active / New members" ordering, **server-side pagination** |
+| **Reader profile** | Tabbed detail page (About, Interests, Photos, Messages), photo **gallery**, **Like** and **Message** actions |
+| **Profile editing** | User and profile details, unsaved-changes warning (`PreventUnsavedChangesGuard`) |
+| **Photo management** | Drag-and-drop / multi-file upload, set main photo, delete with confirmation; face-aware 500×500 crop (Cloudinary) |
+| **Favourites** | "Readers I liked" / "Readers who liked me" lists, paginated |
+| **Messaging** | Unread / Inbox / Outbox, conversation thread, mark as read, **soft delete** (record removed once both sides delete), relative timestamps (`timeAgo` pipe) |
+| **API documentation** | OpenAPI document generated at runtime and an interactive **Scalar** reference (development only) |
 
-## 🖼️ Ekran Görüntüleri
+## 🖼️ Screenshots
 
-| Açılış & Giriş | Giriş sonrası menü | Okurlar listesi |
+| Landing & login | Menu after login | Readers list |
 |:---:|:---:|:---:|
-| ![Açılış](Tanitim/Goruntu1.JPG) | ![Menü](Tanitim/Goruntu1_1.JPG) | ![Okurlar](Tanitim/Goruntu1_2.JPG) |
+| ![Landing](Tanitim/Goruntu1.JPG) | ![Menu](Tanitim/Goruntu1_1.JPG) | ![Readers](Tanitim/Goruntu1_2.JPG) |
 
-| Okur detayı & galeri | Profil bilgileri | Fotoğraf yönetimi |
+| Reader detail & gallery | Profile details | Photo management |
 |:---:|:---:|:---:|
-| ![Galeri](Tanitim/Goruntu3.JPG) | ![Profil](Tanitim/Goruntu4.JPG) | ![Fotoğraflar](Tanitim/Goruntu2.JPG) |
+| ![Gallery](Tanitim/Goruntu3.JPG) | ![Profile](Tanitim/Goruntu4.JPG) | ![Photos](Tanitim/Goruntu2.JPG) |
 
-| Silme onayı | Silme başarılı | Profil fotoğrafı değişti |
+| Delete confirmation | Delete succeeded | Main photo changed |
 |:---:|:---:|:---:|
-| ![Onay](Tanitim/Goruntu2_1.JPG) | ![Silindi](Tanitim/Goruntu2_2.JPG) | ![Güncellendi](Tanitim/Goruntu2_3.JPG) |
+| ![Confirm](Tanitim/Goruntu2_1.JPG) | ![Deleted](Tanitim/Goruntu2_2.JPG) | ![Updated](Tanitim/Goruntu2_3.JPG) |
 
-**Üyelik formu doğrulamaları** — şifre 4–8 karakter olmalı, şifre tekrarı eşleşmeli, form eksikse **Kaydet** butonu pasif kalır:
+**Registration form validation** — the password must be 4–8 characters, the confirmation must match, and the **Save** button stays disabled until the form is valid:
 
-| Boş form | Şifre uzunluğu | Şifre eşleşmesi |
+| Empty form | Password length | Password mismatch |
 |:---:|:---:|:---:|
-| ![Form](Tanitim/Goruntu5_1.JPG) | ![Uzunluk](Tanitim/Goruntu5_2.JPG) | ![Eşleşme](Tanitim/Goruntu5_3.JPG) |
+| ![Form](Tanitim/Goruntu5_1.JPG) | ![Length](Tanitim/Goruntu5_2.JPG) | ![Mismatch](Tanitim/Goruntu5_3.JPG) |
 
 ---
 
-## 🧰 Teknoloji Yığını
+## 🧰 Tech Stack
 
-| Katman | Teknoloji |
+| Layer | Technology |
 |---|---|
 | **Backend** | ASP.NET Core Web API (.NET 10), Entity Framework Core 10, AutoMapper, Newtonsoft.Json |
-| **Veritabanı** | SQLite (EF Core Migrations ile) |
-| **Kimlik Doğrulama** | JWT Bearer, HMAC-SHA512 parola hash'i |
-| **Medya** | Cloudinary (CloudinaryDotNet) |
+| **API docs** | `Microsoft.AspNetCore.OpenApi` (OpenAPI document) + **Scalar.AspNetCore** (interactive reference) |
+| **Database** | SQLite (EF Core migrations) |
+| **Authentication** | JWT Bearer, HMAC-SHA512 password hashing |
+| **Media** | Cloudinary (CloudinaryDotNet) |
 | **Frontend** | Angular 9 (Ivy), TypeScript 3.8, RxJS 6, ngx-bootstrap 5, Bootswatch/Bootstrap 4, @kolkov/ngx-gallery, ng2-file-upload, AlertifyJS |
-| **CI/CD** | GitHub Actions (build + test + lint, otomatik etiketleme ve sürüm oluşturma, PR atama) |
+| **CI/CD** | GitHub Actions (build + test + lint, automatic labelling and releases, PR assignment) |
 
 ---
 
-## 🏗️ Mimari
+## 🏗️ Architecture
 
-İstemci (SPA) ile API REST/JSON üzerinden konuşur; her istekte JWT taşınır. API, katmanlı yapıdadır: **Controller → Repository → DbContext**. Varlıklar doğrudan dışarı verilmez, **DTO + AutoMapper** kullanılır.
+The SPA talks to the API over REST/JSON and sends a JWT with every request. The API is layered: **Controller → Repository → DbContext**. Entities are never exposed directly; **DTOs + AutoMapper** are used instead. In development the API also publishes an OpenAPI document that Scalar renders.
 
 ```mermaid
 flowchart LR
@@ -82,17 +87,21 @@ flowchart LR
         CTR --> MAP["AutoMapper + DTO"]
         FLT["LogUserActivity<br/>Action Filter"] -.-> CTR
         REP --> CTX["DataContext - EF Core"]
+        OAS["OpenAPI document<br/>/openapi/v1.json"]
     end
 
     DB[("SQLite")]
-    CLD["Cloudinary<br/>Görsel depolama"]
+    CLD["Cloudinary<br/>Image storage"]
+    SCL["Scalar API Reference<br/>/scalar/v1"]
 
     SRV -->|"REST / JSON + JWT"| CTR
     CTX --> DB
-    CTR -->|"fotoğraf yükle / sil"| CLD
+    CTR -->|"upload / delete photo"| CLD
+    CTR -.->|"describes"| OAS
+    OAS -.->|"rendered by - dev only"| SCL
 ```
 
-### UML — Alan Modeli (Class Diagram)
+### UML — Domain Model (Class Diagram)
 
 ```mermaid
 classDiagram
@@ -149,9 +158,9 @@ classDiagram
     Message "0..*" --> "1" User : Recipient
 ```
 
-> `Like` tablosu `(LikerId, LikeeId)` **bileşik anahtarına** sahiptir; `Like` ve `Message` ilişkilerinde silme davranışı `Restrict`'tir.
+> `Like` has the **composite key** `(LikerId, LikeeId)`; the `Like` and `Message` relationships use `DeleteBehavior.Restrict`.
 
-### UML — Backend Katmanları (Class Diagram)
+### UML — Backend Layers (Class Diagram)
 
 ```mermaid
 classDiagram
@@ -223,105 +232,115 @@ classDiagram
     UsersController ..> LogUserActivity : ServiceFilter
 ```
 
-### UML — Giriş ve Sayfalı Liste (Sequence Diagram)
+### UML — Login and Paged List (Sequence Diagram)
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor U as Kullanıcı
+    actor U as User
     participant SPA as Angular SPA
     participant AUTH as AuthController
     participant USR as UsersController
     participant REPO as Repository
     participant DB as SQLite
 
-    U->>SPA: Kullanıcı adı + şifre
+    U->>SPA: Username + password
     SPA->>AUTH: POST /api/auth/login
     AUTH->>REPO: Login(username, password)
-    REPO->>DB: Kullanıcıyı getir
+    REPO->>DB: Load user
     DB-->>REPO: User
-    REPO-->>AUTH: Hash doğrulandı
-    AUTH-->>SPA: 200 OK + JWT + kullanıcı özeti
-    SPA->>SPA: Token'ı localStorage'a kaydet
+    REPO-->>AUTH: Password hash verified
+    AUTH-->>SPA: 200 OK + JWT + user summary
+    SPA->>SPA: Store token in localStorage
 
-    U->>SPA: "Okurlar" sayfası
+    U->>SPA: Open "Readers" page
     SPA->>USR: GET /api/users - minAge, maxAge, orderBy, pageNumber (Bearer JWT)
     USR->>REPO: GetUsers(userParams)
-    REPO->>DB: Filtre + sıralama + Skip/Take
-    DB-->>REPO: Sayfa verisi
+    REPO->>DB: Filter + order + Skip/Take
+    DB-->>REPO: Page of users
     REPO-->>USR: PagedList
-    USR-->>SPA: 200 OK + DTO listesi + Pagination header
-    USR->>REPO: LastActive güncelle (LogUserActivity)
+    USR-->>SPA: 200 OK + DTO list + Pagination header
+    USR->>REPO: Update LastActive (LogUserActivity)
 ```
 
-### UML — Fotoğraf Yükleme (Sequence Diagram)
+### UML — Photo Upload (Sequence Diagram)
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor U as Kullanıcı
+    actor U as User
     participant SPA as Angular SPA
     participant PH as PhotosController
     participant CLD as Cloudinary
     participant DB as SQLite
 
-    U->>SPA: Fotoğrafı sürükle-bırak
+    U->>SPA: Drag and drop a photo
     SPA->>PH: POST /api/users/{id}/photos (multipart + JWT)
-    PH->>PH: JWT'deki kullanıcı = {id} mi?
-    PH->>CLD: Upload (500x500, yüz algılamalı kırpma)
+    PH->>PH: Does the JWT user match {id}?
+    PH->>CLD: Upload (500x500, face-aware crop)
     CLD-->>PH: Url + PublicId
-    PH->>DB: Photo kaydı (ilk fotoğraf ise IsMain = true)
+    PH->>DB: Save Photo (IsMain = true if it is the first one)
     PH-->>SPA: 201 Created + PhotoForReturnDto
-    SPA-->>U: Galeri güncellenir
+    SPA-->>U: Gallery refreshes
 ```
 
 ---
 
-## 🔌 API Uç Noktaları
+## 🔌 API Reference
 
-`/api/auth/*` dışındaki tüm uç noktalar `Authorization: Bearer <JWT>` ister.
+In development the API serves an interactive reference built with **OpenAPI + Scalar**:
 
-| Yöntem | Yol | Açıklama |
+| URL | Purpose |
+|---|---|
+| `http://localhost:5000/scalar/v1` | Scalar API reference (opened automatically by the `KimOkur.API` launch profile) |
+| `http://localhost:5000/openapi/v1.json` | Raw OpenAPI document |
+
+Both are mapped only when `ASPNETCORE_ENVIRONMENT=Development`. All endpoints except `/api/auth/*` require `Authorization: Bearer <JWT>`; get a token from `POST /api/auth/login`.
+
+| Method | Path | Description |
 |---|---|---|
-| `POST` | `/api/auth/register` · `/api/auth/login` | Kayıt ol / JWT al |
-| `GET` | `/api/users` | Filtreli (`minAge`, `maxAge`, `gender`, `orderBy`, `likers`, `likees`) ve sayfalı okur listesi |
-| `GET` · `PUT` | `/api/users/{id}` | Okur detayı / profil güncelleme |
-| `POST` | `/api/users/{id}/like/{recipientId}` | Okuru beğen |
-| `POST` | `/api/users/{userId}/photos` | Fotoğraf yükle |
-| `POST` · `DELETE` | `/api/users/{userId}/photos/{id}/setMain` · `/photos/{id}` | Profil fotoğrafı seç / fotoğraf sil |
-| `GET` | `/api/users/{userId}/messages` · `/messages/thread/{recipientId}` | Mesaj kutusu (`Unread` · `Inbox` · `Outbox`) / konuşma akışı |
-| `POST` | `/api/users/{userId}/messages` · `/messages/{id}/read` | Mesaj gönder / okundu işaretle |
+| `POST` | `/api/auth/register` · `/api/auth/login` | Register / obtain a JWT |
+| `GET` | `/api/users` | Paged reader list with filters (`minAge`, `maxAge`, `gender`, `orderBy`, `likers`, `likees`) |
+| `GET` · `PUT` | `/api/users/{id}` | Reader details / update profile |
+| `POST` | `/api/users/{id}/like/{recipientId}` | Like a reader |
+| `POST` | `/api/users/{userId}/photos` | Upload a photo |
+| `POST` · `DELETE` | `/api/users/{userId}/photos/{id}/setMain` · `/photos/{id}` | Set main photo / delete a photo |
+| `GET` | `/api/users/{userId}/messages` · `/messages/thread/{recipientId}` | Mailbox (`Unread` · `Inbox` · `Outbox`) / conversation thread |
+| `POST` | `/api/users/{userId}/messages` · `/messages/{id}/read` | Send a message / mark as read |
 
 ---
 
-## 💡 Öne Çıkan Mühendislik Kararları
+## 💡 Engineering Highlights
 
-- **Katmanlı API:** Controller → Repository (arayüzlerle, DI ile) → EF Core `DbContext`; varlık yerine **DTO** döndürme.
-- **Sunucu taraflı sayfalama:** `PagedList<T>` + `Pagination` HTTP başlığı; SPA bu başlığı çözümleyip sayfalayıcıyı besler.
-- **Yetkilendirme deseni:** Kullanıcıya özel uç noktalar, yoldaki `{id}` ile JWT'deki `NameIdentifier` claim'ini karşılaştırır.
-- **Action filter:** `LogUserActivity` her yetkili istekte kullanıcının son aktif zamanını günceller.
-- **Angular tarafında:** Route **resolver'lar** ile veri sayfa açılmadan yüklenir, **guard'lar** ile yetkisiz erişim ve kaydedilmemiş değişiklik kaybı engellenir, merkezi **HTTP hata interceptor'ı** kullanılır.
-- **Modernizasyon:** Proje **.NET Core 2.2 → .NET 10**'a taşındı; Angular **8 → 9** geçişi yapıldı ve **adım adım Angular 22**'ye çıkış sürüyor. Ivy ile uyumsuz paketler değiştirildi (ngx-bootstrap 5, `@kolkov/ngx-gallery`, yerel `timeAgo` pipe).
-- **CI/CD (GitHub Actions):** SPA için `npm ci` → `lint` → `test` → `build` iş akışı; PR'lara dal adına göre etiket atanır, `master`'a birleşince otomatik sürüm etiketi/release oluşturulur; PR'ı açan ve birleştiren kişi otomatik atanır.
+- **Layered API:** Controller → Repository (interfaces + DI) → EF Core `DbContext`; DTOs instead of entities.
+- **Server-side pagination:** `PagedList<T>` plus a `Pagination` HTTP header that the SPA parses to drive the pager.
+- **Authorization pattern:** user-scoped endpoints compare the route `{id}` with the JWT `NameIdentifier` claim.
+- **Action filter:** `LogUserActivity` updates the user's last-active time on every authorized request.
+- **Self-documenting API:** runtime-generated OpenAPI document and a Scalar UI, enabled in development only.
+- **Angular patterns:** route **resolvers** pre-load data, **guards** block unauthorized access and unsaved-changes loss, a central **HTTP error interceptor** handles failures.
+- **Modernization:** migrated **.NET Core 2.2 → .NET 10** and **Angular 8 → 9**, with a step-by-step upgrade path toward Angular 22. Packages incompatible with Ivy were replaced (ngx-bootstrap 5, `@kolkov/ngx-gallery`, a local `timeAgo` pipe).
+- **CI/CD (GitHub Actions):** `npm ci` → `lint` → `test` → `build` workflow for the SPA; PRs are labelled by branch name, a release/tag is created automatically on merge to `master`, and the PR author and merger are assigned automatically.
 
 ---
 
-## 🚀 Yerel Çalıştırma
+## 🚀 Getting Started
 
-**Gereksinimler:** .NET 10 SDK, Node.js **12–14** (Angular 9 / webpack 4 gereği; `nvm use 14` önerilir).
+**Requirements:** .NET 10 SDK and Node.js **12–14** (Angular 9 / webpack 4 requirement; `nvm use 14` is recommended).
 
 ### 1) API
 
 ```bash
 cd KimOkurAPP.API
-dotnet user-secrets set "AppSettings:Token" "<en az 64 karakterlik rastgele bir anahtar>"
+dotnet user-secrets set "AppSettings:Token" "<random key, at least 64 characters>"
 dotnet user-secrets set "CloudinarySettings:CloudName" "<cloud-name>"
 dotnet user-secrets set "CloudinarySettings:ApiKey" "<api-key>"
 dotnet user-secrets set "CloudinarySettings:ApiSecret" "<api-secret>"
 dotnet run --urls http://localhost:5000
 ```
 
-SQLite dosyası (`KimOkurAPP.db`) çalışma dizininden okunduğu için API'yi `KimOkurAPP.API/` klasöründen çalıştırın. Boş bir veritabanı için `Data/Seed.cs` örnek kullanıcıları (`UserSeedData.json`, varsayılan şifre `password`) yükler; çağrısı `Program.cs` içinde yorum satırındadır.
+Then open **http://localhost:5000/scalar/v1** to explore the API.
+
+The SQLite file (`KimOkurAPP.db`) is resolved from the working directory, so run the API from the `KimOkurAPP.API/` folder. For an empty database, `Data/Seed.cs` loads sample users (`UserSeedData.json`, default password `password`); the call is commented out in `Program.cs`.
 
 ### 2) SPA
 
@@ -331,39 +350,41 @@ npm install
 npm start          # http://localhost:4200
 ```
 
-SPA, API adresini `src/environments/environment.ts` içinden alır (`http://localhost:5000/api/`).
+The SPA reads the API address from `src/environments/environment.ts` (`http://localhost:5000/api/`).
 
 ---
 
-## 🗂️ Proje Yapısı
+## 🗂️ Project Structure
 
 ```
 KimOkurAPP
 ├── KimOkurAPP.API/          # ASP.NET Core Web API
 │   ├── Controllers/         # Auth, Users, Photos, Messages
-│   ├── Data/                # DbContext, repository'ler, seed
-│   ├── Dtos/ · Models/      # DTO'lar ve varlıklar
-│   ├── Helpers/             # PagedList, filtre, AutoMapper profilleri
-│   └── Migrations/          # EF Core migration'ları
+│   ├── Data/                # DbContext, repositories, seed
+│   ├── Dtos/ · Models/      # DTOs and entities
+│   ├── Helpers/             # PagedList, filters, AutoMapper profiles
+│   └── Migrations/          # EF Core migrations
 ├── KimOkurAPP-SPA/          # Angular SPA
 │   └── src/app/             # members, messages, lists, nav, register, _services, _guards, _resolves
-├── Tanitim/                 # Ekran görüntüleri
-└── .github/workflows/       # CI/CD ve otomasyon
+├── Tanitim/                 # Screenshots
+└── .github/workflows/       # CI/CD and automation
 ```
 
 ---
 
-## 🛣️ Yol Haritası
+## 🛣️ Roadmap
 
-- [ ] Angular 9 → 22 geçişi (her major sürüm için ayrı adım)
-- [ ] SPA testlerinin ve `lint` hatalarının düzeltilmesi (CI'ın yeşile dönmesi), üretim `environment` ayarı
-- [ ] Backend birim ve entegrasyon testleri (xUnit + `WebApplicationFactory`), CI'a `dotnet build/test` eklenmesi
-- [ ] Minimal hosting'e geçiş, `System.Text.Json`, `ProblemDetails` ile standart hata yanıtları
-- [ ] Gizli bilgilerin tamamen `user-secrets`/ortam değişkenlerine taşınması, ASP.NET Core Identity
-- [ ] SPA'nın API üzerinden sunulması (Kestrel) ve üretim yapılandırması
+- [ ] Angular 9 → 22 upgrade (one major version at a time)
+- [ ] Fix the `MessagesController` route conflict so sending and deleting messages works
+- [ ] Fix the SPA tests and `lint` errors (get CI green) and add the production `environment` settings
+- [ ] Backend unit and integration tests (xUnit + `WebApplicationFactory`) and `dotnet build/test` in CI
+- [ ] Add a JWT Bearer security scheme to the OpenAPI document so protected endpoints can be called from Scalar
+- [ ] Minimal hosting, `System.Text.Json`, standard `ProblemDetails` error responses
+- [ ] Move all secrets to `user-secrets`/environment variables, adopt ASP.NET Core Identity
+- [ ] Serve the SPA from the API (Kestrel) and production configuration
 
 ---
 
-## 👩‍💻 Geliştirici
+## 👩‍💻 Author
 
 **Nisanur** — [@NisanurBulut](https://github.com/NisanurBulut)
