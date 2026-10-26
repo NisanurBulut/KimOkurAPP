@@ -38,19 +38,34 @@ jobs:
           number=$(jq -r '.number' <<< "$pr")
           title=$(jq -r '.title' <<< "$pr")
           labels=$(jq -r '.labels[].name' <<< "$pr")
+          branch=$(jq -r '.head.ref' <<< "$pr")   # source branch of the merged PR
 
-          # Tags look like v.<major>.<minor>.<feature>.<fix>; start from v.1.0.0.0 when none exist.
-          last=$(git tag --list 'v.*' --sort=-v:refname | head -n 1)
-          last=${last:-v.1.0.0.0}
-          IFS=. read -r _ a b c d <<< "$last"
+          # Tags look like v<major>.<minor>.<patch> (e.g. v1.4.0); start from 1.0.0 when none exist.
+          # Earlier releases used v.<major>.<minor>.<feature>.<fix> (e.g. v.1.0.3.0). Those are mapped to
+          # <major>.<feature>.<fix> (-> 1.3.0) so the numbering simply continues.
+          last=$(
+            git tag --list 'v*' | while read -r t; do
+              if [[ $t =~ ^v\.([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                echo "${BASH_REMATCH[1]}.${BASH_REMATCH[3]}.${BASH_REMATCH[4]}"
+              elif [[ $t =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                echo "${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
+              fi
+            done | sort -V | tail -n 1
+          )
+          last=${last:-1.0.0}
+          IFS=. read -r major minor patch <<< "$last"
 
-          # PRs labelled "enhancement" bump the feature number, everything else bumps the fix number.
-          if grep -qx enhancement <<< "$labels"; then
-            c=$((c + 1)); d=0
+          # A PR labelled "breaking" (added automatically to branches named *major*, or by hand) or a source
+          # branch whose name contains "major" bumps the major number (minor and patch reset),
+          # a PR labelled "enhancement" bumps the minor number, everything else bumps the patch number.
+          if grep -qx breaking <<< "$labels" || [[ "${branch,,}" == *major* ]]; then
+            major=$((major + 1)); minor=0; patch=0
+          elif grep -qx enhancement <<< "$labels"; then
+            minor=$((minor + 1)); patch=0
           else
-            d=$((d + 1))
+            patch=$((patch + 1))
           fi
-          tag="v.$a.$b.$c.$d"
+          tag="v$major.$minor.$patch"
 
           # Release notes: PR description + link, then GitHub's auto-generated changelog.
           {
