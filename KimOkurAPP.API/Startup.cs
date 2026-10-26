@@ -1,7 +1,6 @@
 ﻿using KimOkur.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +12,6 @@ using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using KimOkur.API.Helpers;
-using AutoMapper;
 using KimOkurAPP.API.Helpers;
 
 namespace KimOkur.API
@@ -54,6 +52,7 @@ namespace KimOkur.API
                     };
                 });
             services.AddScoped<LogUserActivity>();
+            services.AddOpenApi();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
