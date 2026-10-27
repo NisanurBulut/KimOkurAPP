@@ -4,13 +4,13 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=E95420&center=true&vCenter=true&width=640&lines=Discover+readers+near+you+%F0%9F%93%9A;Like+them+%E2%9D%A4%EF%B8%8F+and+start+a+conversation+%F0%9F%92%AC;ASP.NET+Core+(.NET+10)+%2B+Angular+12;Documented+with+OpenAPI+%2B+Scalar" alt="Typing intro" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=E95420&center=true&vCenter=true&width=640&lines=Discover+readers+near+you+%F0%9F%93%9A;Like+them+%E2%9D%A4%EF%B8%8F+and+start+a+conversation+%F0%9F%92%AC;ASP.NET+Core+(.NET+10)+%2B+Angular+13;Documented+with+OpenAPI+%2B+Scalar" alt="Typing intro" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Angular-12-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular 12" />
-  <img src="https://img.shields.io/badge/TypeScript-4.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 4.3" />
+  <img src="https://img.shields.io/badge/Angular-13-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular 13" />
+  <img src="https://img.shields.io/badge/TypeScript-4.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 4.6" />
   <img src="https://img.shields.io/badge/SQLite-EF%20Core-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
   <br/>
   <img src="https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
@@ -20,26 +20,37 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/NisanurBulut/KimOkurAPP"><img src="https://img.shields.io/github/stars/NisanurBulut/KimOkurAPP?style=social" alt="GitHub stars" /></a>
+  <a href="https://github.com/NisanurBulut/KimOkurAPP/fork"><img src="https://img.shields.io/github/forks/NisanurBulut/KimOkurAPP?style=social" alt="GitHub forks" /></a>
+  <a href="https://github.com/NisanurBulut/KimOkurAPP/releases"><img src="https://img.shields.io/github/v/release/NisanurBulut/KimOkurAPP?style=flat-square&color=E95420&labelColor=772953&label=release" alt="Latest release" /></a>
+  <a href="https://github.com/NisanurBulut/KimOkurAPP/commits"><img src="https://img.shields.io/github/last-commit/NisanurBulut/KimOkurAPP?style=flat-square&color=E95420&labelColor=772953" alt="Last commit" /></a>
+</p>
+
+<p align="center">
   <a href="#features"><b>✨ Features</b></a> &nbsp;·&nbsp;
   <a href="#screenshots"><b>🖼️ Screenshots</b></a> &nbsp;·&nbsp;
   <a href="#architecture"><b>🏗️ Architecture</b></a> &nbsp;·&nbsp;
   <a href="#api"><b>🔌 API</b></a> &nbsp;·&nbsp;
   <a href="#upgrade-journey"><b>🧭 Upgrade Journey</b></a> &nbsp;·&nbsp;
   <a href="#getting-started"><b>🚀 Getting Started</b></a> &nbsp;·&nbsp;
-  <a href="#roadmap"><b>🛣️ Roadmap</b></a>
+  <a href="#roadmap"><b>🛣️ Roadmap</b></a> &nbsp;·&nbsp;
+  <a href="#support"><b>⭐ Support</b></a>
 </p>
 
 ---
 
-**Kim Okur?** (*"Who reads?"*) lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API on .NET 10**, the front end is an **Angular 12 SPA**. Authentication uses **JWT**, images live on **Cloudinary**, and the API documents itself with **OpenAPI** and an interactive **Scalar** reference.
+**Kim Okur?** (*"Who reads?"*) lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API on .NET 10**, the front end is an **Angular 13 SPA**. Authentication uses **JWT**, images live on **Cloudinary**, and the API documents itself with **OpenAPI** and an interactive **Scalar** reference.
 
 > [!NOTE]
 > The application UI is in Turkish; code, API and documentation are in English.
 
+> [!TIP]
+> **Like what you see?** [⭐ Star the repository](https://github.com/NisanurBulut/KimOkurAPP) — it takes one click and helps other developers find this upgrade playbook, the release automation and the UML diagrams.
+
 <table align="center">
   <tr>
     <td align="center" width="25%"><h2>.NET 10</h2><sub>API migrated from<br/>.NET Core 2.2</sub></td>
-    <td align="center" width="25%"><h2>8 → 12</h2><sub>Angular majors upgraded<br/>one step at a time</sub></td>
+    <td align="center" width="25%"><h2>8 → 13</h2><sub>Angular majors upgraded<br/>one step at a time</sub></td>
     <td align="center" width="25%"><h2>6</h2><sub>Mermaid / UML diagrams<br/>in this README</sub></td>
     <td align="center" width="25%"><h2>3</h2><sub>GitHub Actions workflows<br/>CI · releases · PR automation</sub></td>
   </tr>
@@ -142,7 +153,8 @@
 | 🗄️ **Database** | SQLite with EF Core migrations |
 | 🔐 **Authentication** | JWT Bearer, HMAC-SHA512 password hashing |
 | ☁️ **Media** | Cloudinary (CloudinaryDotNet) |
-| 🅰️ **Frontend** | Angular 12 (Ivy, webpack 5), TypeScript 4.3, RxJS 6, ngx-bootstrap 5, Bootswatch (United), @kolkov/ngx-gallery, ng2-file-upload, AlertifyJS |
+| 🅰️ **Frontend** | Angular 13 (Ivy, webpack 5), TypeScript 4.6, RxJS 6, ngx-bootstrap 5, Bootswatch (United), @kolkov/ngx-gallery, ng2-file-upload, AlertifyJS |
+| 🧹 **Code quality** | ESLint with `@angular-eslint` (TypeScript + template rules) |
 | 🚦 **CI/CD** | GitHub Actions — SPA build/lint/test, automatic semantic releases, PR labelling and assignment |
 
 <a name="architecture"></a>
@@ -153,7 +165,7 @@ The SPA talks to the API over REST/JSON and sends a JWT with every request. The 
 
 ```mermaid
 flowchart LR
-    subgraph SPA["🅰️ Angular 12 SPA"]
+    subgraph SPA["🅰️ Angular 13 SPA"]
         direction TB
         CMP["Components"] --> SRV["Services<br/>Auth / User / Alertify"]
         RES["Route Resolvers"] --> SRV
@@ -419,12 +431,12 @@ In development the API serves an interactive reference built with **OpenAPI + Sc
 - ⏱️ **Action filter** — `LogUserActivity` updates the user's last-active time on every authorized request.
 - 📘 **Self-documenting API** — runtime OpenAPI document and a Scalar UI, enabled in development only.
 - 🅰️ **Angular patterns** — route **resolvers** pre-load data, **guards** block unauthorized access and unsaved-changes loss, a central **HTTP error interceptor** handles failures.
-- 🔁 **Modernization** — **.NET Core 2.2 → .NET 10** and **Angular 8 → 12**, documented step by step in the [Upgrade Journey](#upgrade-journey).
+- 🔁 **Modernization** — **.NET Core 2.2 → .NET 10** and **Angular 8 → 13**, documented step by step in the [Upgrade Journey](#upgrade-journey).
 - 🚦 **Release automation** — every merged PR becomes a GitHub release with a semantic version: a branch named `*major*` or the `breaking` label bumps **major**, `enhancement` bumps **minor**, anything else bumps **patch**. PRs are labelled from their branch name and auto-assigned to their author and merger.
 
 <a name="upgrade-journey"></a>
 
-## 🧭 Angular Upgrade Journey: 8 → 12
+## 🧭 Angular Upgrade Journey: 8 → 13
 
 The SPA started on **Angular 8 (2019)**. Instead of jumping versions, it was upgraded **one major release at a time**: `ng update`, review the migration diff, fix incompatible libraries, then prove the result with a build, an AOT compile and a browser smoke test before moving on. The path continues toward Angular 22.
 
@@ -434,15 +446,16 @@ flowchart LR
     A9 --> A10["Angular 10<br/>tslib 2 · TS 4.0"]
     A10 --> A11["Angular 11<br/>waitForAsync"]
     A11 --> A12["Angular 12<br/>webpack 5 · TS 4.3"]
-    A12 -.->|"planned"| NEXT["Angular 13 to 22"]
+    A12 --> A13["Angular 13<br/>ESLint · TS 4.6"]
+    A13 -.->|"planned"| NEXT["Angular 14 to 22"]
 
     classDef old fill:#9E9E9E,stroke:#616161,color:#ffffff
     classDef step fill:#772953,stroke:#4E1B37,color:#ffffff
     classDef now fill:#DD0031,stroke:#A3001F,color:#ffffff,stroke-width:3px
     classDef next fill:#ffffff,stroke:#E95420,color:#E95420,stroke-dasharray:5 5
     class A8 old
-    class A9,A10,A11 step
-    class A12 now
+    class A9,A10,A11,A12 step
+    class A13 now
     class NEXT next
 ```
 
@@ -452,7 +465,8 @@ flowchart LR
 | ![9](https://img.shields.io/badge/9-Ivy-772953?style=flat-square) | 9.1.13 | 9.1.15 | 3.8.3 | **Ivy** becomes the default compiler |
 | ![10](https://img.shields.io/badge/10-tslib%202-772953?style=flat-square) | 10.2.5 | 10.2.4 | 4.0.8 | tslib 2, TSLint 6, CommonJS warnings, new `tsconfig` targets |
 | ![11](https://img.shields.io/badge/11-waitForAsync-772953?style=flat-square) | 11.2.14 | 11.2.19 | 4.0.8 | `waitForAsync`, router link-resolution migration, TSLint deprecated |
-| ![12](https://img.shields.io/badge/12-webpack%205-DD0031?style=flat-square) | 12.2.17 | 12.2.18 | 4.3.5 | **webpack 5**, production-by-default builds, zone.js 0.11 |
+| ![12](https://img.shields.io/badge/12-webpack%205-772953?style=flat-square) | 12.2.17 | 12.2.18 | 4.3.5 | **webpack 5**, production-by-default builds, zone.js 0.11 |
+| ![13](https://img.shields.io/badge/13-ESLint-DD0031?style=flat-square) | 13.4.0 | 13.3.11 | 4.6.4 | View Engine removed, IE 11 dropped, **TSLint → ESLint**, persistent build cache |
 
 <details open>
 <summary><b>① Angular 8 → 9 — Ivy arrives</b></summary>
@@ -505,13 +519,26 @@ Angular 9 switched the compiler to **Ivy**, which is where most of the real work
 
 </details>
 
+<details>
+<summary><b>⑤ Angular 12 → 13 — goodbye View Engine, hello ESLint</b></summary>
+<br/>
+
+- Upgraded to Angular **13.4.0**, CLI **13.3.11** and TypeScript **4.6.4**.
+- **Lessons from step ④ applied up front:** npm 8 was placed first on the `PATH` and `legacy-peer-deps` enabled before running `ng update`, so the whole upgrade — temporary CLI, package install and migrations — ran in a single pass with no broken `node_modules`.
+- Migrations removed the **Internet Explorer polyfills** (IE 11 support ended), cleaned obsolete `angular.json` options, added **`.angular/cache`** (the new persistent build cache) to `.gitignore`, and set the `TestBed` **`teardown`** option explicitly so tests keep their current behaviour.
+- **TSLint is gone.** Angular 13 removed the TSLint builder, so `ng lint` — and the CI step that runs it — stopped working. Linting was migrated to **ESLint** with `@angular-eslint`: TSLint, Codelyzer and `tslint.json` were removed and `tslint:disable` comments were converted to their ESLint equivalents.
+- **ESLint found real issues TSLint never checked:** loose `==` / `!=` comparisons in templates and empty `ngOnInit` hooks. Each comparison was reviewed — both sides always had the same type — before switching to `===` / `!==`, and the empty hooks were removed. Result: **"All files pass linting."**
+- ✅ **Result:** clean build; with IE 11 gone there is no separate ES5 bundle any more — a single initial bundle of **4.46 MB** (vs. 4.73 MB for the ES2015 bundle on Angular 12) — and a verified browser smoke test.
+
+</details>
+
 #### ✅ What was verified at every step
 
 | Check | Result |
 |---|---|
 | `ng build` (AOT / Ivy) | ✅ passes on every version |
 | Browser smoke test (`ng serve`: home page, registration form, datepicker, console) | ✅ no errors |
-| `ng lint` | ✅ 0 errors on Angular 12 |
+| `ng lint` | ✅ ESLint: all files pass on Angular 13 (TSLint with 0 errors up to Angular 12) |
 | Unit tests | ⚠️ default CLI scaffolds still fail (missing `HttpClientTestingModule`) — on the roadmap |
 | Production build | ⚠️ needs an `apiUrl` in `environment.prod.ts` — on the roadmap |
 
@@ -529,7 +556,7 @@ Angular 9 switched the compiler to **Ivy**, which is where most of the real work
 ## 🚀 Getting Started
 
 > [!WARNING]
-> **Node.js 12.14+ / 14.15+ is required** for Angular 12 (`nvm use 14` is recommended). Node 17 and newer break the webpack build with `ERR_OSSL_EVP_UNSUPPORTED`. You also need the **.NET 10 SDK**.
+> **Node.js 12.20+ / 14.15+ / 16.10+ is required** for Angular 13 (`nvm use 14` is recommended); newer Node versions are not supported by this Angular release. You also need the **.NET 10 SDK**.
 
 ### 1️⃣ API
 
@@ -580,18 +607,67 @@ KimOkurAPP
 ## 🛣️ Roadmap
 
 - [x] Migrate the API from .NET Core 2.2 to .NET 10
-- [x] Upgrade the SPA from Angular 8 to Angular 12
+- [x] Upgrade the SPA from Angular 8 to Angular 13
+- [x] Migrate linting from TSLint to ESLint
 - [x] Interactive API documentation with OpenAPI + Scalar
 - [x] Automatic semantic releases and PR labelling/assignment
-- [ ] Angular 12 → 22 upgrade (one major version at a time)
+- [ ] Angular 13 → 22 upgrade (one major version at a time)
 - [ ] Fix the `MessagesController` route conflict so sending and deleting messages works
 - [ ] Fix the SPA tests and add the production `environment` settings (get CI green)
-- [ ] Migrate linting from TSLint to ESLint
 - [ ] Backend unit and integration tests (xUnit + `WebApplicationFactory`) and `dotnet build/test` in CI
 - [ ] Add a JWT Bearer security scheme to the OpenAPI document so protected endpoints can be called from Scalar
 - [ ] Minimal hosting, `System.Text.Json`, standard `ProblemDetails` error responses
 - [ ] Move all secrets to `user-secrets`/environment variables, adopt ASP.NET Core Identity
 - [ ] Serve the SPA from the API (Kestrel) and production configuration
+
+<a name="support"></a>
+
+## ⭐ Support the Project
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1200&color=E95420&center=true&vCenter=true&width=720&lines=Enjoyed+the+journey%3F+Leave+a+%E2%AD%90;Next+stop%3A+Angular+22+%F0%9F%9A%80;Thank+you+for+reading+%F0%9F%92%9C" alt="Leave a star" />
+</p>
+
+<p align="center">
+  Upgrading a 2019 codebase across <b>.NET Core 2.2 → .NET 10</b> and <b>Angular 8 → 13</b> took many careful steps.<br/>
+  If anything here helped you — the <b>upgrade playbook</b>, the <b>release automation</b> or the <b>UML diagrams</b> — a star makes it easier for others to find.
+</p>
+
+<table align="center">
+  <tr>
+    <td align="center" width="25%">
+      <a href="https://github.com/NisanurBulut/KimOkurAPP"><h1>⭐</h1></a>
+      <b>Star it</b><br/>
+      <sub>Bookmark the project and help it reach more developers.</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://github.com/NisanurBulut/KimOkurAPP/fork"><h1>🍴</h1></a>
+      <b>Fork it</b><br/>
+      <sub>Reuse the playbook, the workflows or the README setup in your own repo.</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><h1>📣</h1></a>
+      <b>Share it</b><br/>
+      <sub>Know someone stuck on an old Angular version? Send them this repo.</sub>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://github.com/NisanurBulut/KimOkurAPP/issues/new"><h1>💡</h1></a>
+      <b>Suggest</b><br/>
+      <sub>Found a bug or have an idea? Open an issue.</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://github.com/NisanurBulut/KimOkurAPP"><img src="https://img.shields.io/github/stars/NisanurBulut/KimOkurAPP?style=for-the-badge&logo=github&label=Star%20Kim%20Okur%3F&color=E95420&labelColor=772953" alt="Star Kim Okur? on GitHub" /></a>
+  <a href="https://github.com/NisanurBulut/KimOkurAPP/fork"><img src="https://img.shields.io/github/forks/NisanurBulut/KimOkurAPP?style=for-the-badge&logo=github&label=Fork&color=E95420&labelColor=772953" alt="Fork on GitHub" /></a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><img src="https://img.shields.io/badge/Share%20on-LinkedIn-0A66C2?style=for-the-badge" alt="Share on LinkedIn" /></a>
+  <a href="https://twitter.com/intent/tweet?text=Kim%20Okur%3F%20%E2%80%94%20an%20ASP.NET%20Core%20(.NET%2010)%20%2B%20Angular%20app%2C%20upgraded%20Angular%208%20%E2%86%92%2013%20step%20by%20step%20with%20a%20documented%20playbook&url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><img src="https://img.shields.io/badge/Share%20on-X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Share on X" /></a>
+</p>
+
+<p align="center">
+  <sub>Just click <kbd>⭐ Star</kbd> at the top-right of this page — it takes a second and means a lot. 💜</sub>
+</p>
 
 <a name="author"></a>
 
@@ -600,10 +676,6 @@ KimOkurAPP
 <p align="center">
   <b>Nisanur</b><br/>
   <a href="https://github.com/NisanurBulut"><img src="https://img.shields.io/badge/GitHub-NisanurBulut-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: NisanurBulut" /></a>
-</p>
-
-<p align="center">
-  <sub>If you like the project, consider giving it a ⭐</sub>
 </p>
 
 <p align="center">
