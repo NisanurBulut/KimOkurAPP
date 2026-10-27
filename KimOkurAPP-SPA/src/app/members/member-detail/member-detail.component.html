@@ -43,7 +43,8 @@
                         <p>{{user.interest}}</p>
                     </tab>
                     <tab heading="Fotoğrafları">
-                        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                        <gallery class="photo-gallery" [items]="galleryImages"
+                                 thumbPosition="bottom" imageSize="cover"></gallery>
                     </tab>
                     <tab heading="Yazışmalar">
                         <!-- membermessageconponente input olarak recipientId değerini verir -->
