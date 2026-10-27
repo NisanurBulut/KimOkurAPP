@@ -20,7 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": [
               "alertifyjs",
-              "url"
+              "url",
+              "bezier-easing"
             ],
             "assets": [
               "src/favicon.ico",

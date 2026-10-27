@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/_models/User';
+import { PaginatedResult } from 'src/app/_models/Pagination';
 import {
   Resolve,
   Router,
@@ -11,14 +12,14 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class MemberListResolver implements Resolve<User[]> {
+export class MemberListResolver implements Resolve<PaginatedResult<User[]>> {
   pageNumber = 1;
   pageSize = 5;
 
   constructor(private userService: UserService, private router: Router,
               private alertify: AlertifyService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<PaginatedResult<User[]>> {
       return this.userService.getUsers(this.pageNumber, this.pageSize).pipe(
           catchError(error => {
               this.alertify.error('Veri okunurken hata ile karşılaşıldı.');
