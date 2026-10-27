@@ -80,7 +80,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     PaginationModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(appRoutes, {}),
     GalleryModule,
     FileUploadModule,
     JwtModule.forRoot({
