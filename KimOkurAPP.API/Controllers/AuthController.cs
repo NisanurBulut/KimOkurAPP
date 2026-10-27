@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KimOkur.API.Data;
 using KimOkur.API.Dtos;
+using KimOkur.API.Helpers;
 using KimOkur.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -52,8 +53,7 @@ namespace KimOkur.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name,userFromRepo.Username)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(_config.GetSection("Appsettings:Token").Value));
+            var key = JwtSigningKey.Create(_config);
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 

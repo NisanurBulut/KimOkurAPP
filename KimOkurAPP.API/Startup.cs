@@ -46,8 +46,7 @@ namespace KimOkur.API
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                            .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                        IssuerSigningKey = JwtSigningKey.Create(Configuration),
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
