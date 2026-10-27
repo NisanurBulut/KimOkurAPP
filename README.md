@@ -674,8 +674,8 @@ KimOkurAPP
 ## 👩‍💻 Author
 
 <p align="center">
-  <b>Nisanur</b><br/>
-  <a href="https://github.com/NisanurBulut"><img src="https://img.shields.io/badge/GitHub-NisanurBulut-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: NisanurBulut" /></a>
+  <b>by Developerella 💃</b><br/>
+  <a href="https://github.com/NisanurBulut"><img src="https://img.shields.io/badge/GitHub-NisanurAtay-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub: NisanurAtay" /></a>
 </p>
 
 <p align="center">
