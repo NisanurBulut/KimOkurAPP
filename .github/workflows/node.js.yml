@@ -31,7 +31,7 @@ jobs:
         cache-dependency-path: KimOkurAPP-SPA/package-lock.json
     - run: npm ci
     - run: npm run lint
-    - run: npm test -- --no-watch
+    - run: npm test -- --no-watch --browsers=ChromeHeadless
     - run: npm run build
   label-hotfix:
     runs-on: ubuntu-latest

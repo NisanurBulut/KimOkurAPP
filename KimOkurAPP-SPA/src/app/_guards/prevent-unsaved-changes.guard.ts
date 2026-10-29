@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate } from '@angular/router';
+
 import { MemberEditComponent } from '../members/member-edit/member-edit.component';
 
 @Injectable()
-export class PreventUnsavedChangesGuard implements CanDeactivate<MemberEditComponent>
+export class PreventUnsavedChangesGuard 
 {
     // Form üzerinde çalışma devam ederken sayfadan aryılmak istenirse değişimleri korumak için bu kısım çalışır.
     canDeactivate(component: MemberEditComponent) {
