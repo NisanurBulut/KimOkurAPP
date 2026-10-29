@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "KimOkurAPP-SPA:build"
+            "buildTarget": "KimOkurAPP-SPA:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "KimOkurAPP-SPA:build:production"
+              "buildTarget": "KimOkurAPP-SPA:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "KimOkurAPP-SPA:build"
+            "buildTarget": "KimOkurAPP-SPA:build"
           }
         },
         "test": {
