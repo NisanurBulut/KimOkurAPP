@@ -4,13 +4,13 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=E95420&center=true&vCenter=true&width=640&lines=Discover+readers+near+you+%F0%9F%93%9A;Like+them+%E2%9D%A4%EF%B8%8F+and+start+a+conversation+%F0%9F%92%AC;ASP.NET+Core+(.NET+10)+%2B+Angular+16;Documented+with+OpenAPI+%2B+Scalar" alt="Typing intro" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=E95420&center=true&vCenter=true&width=640&lines=Discover+readers+near+you+%F0%9F%93%9A;Like+them+%E2%9D%A4%EF%B8%8F+and+start+a+conversation+%F0%9F%92%AC;ASP.NET+Core+(.NET+10)+%2B+Angular+17;Documented+with+OpenAPI+%2B+Scalar" alt="Typing intro" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Angular-16-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular 16" />
-  <img src="https://img.shields.io/badge/TypeScript-4.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 4.9" />
+  <img src="https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular 17" />
+  <img src="https://img.shields.io/badge/TypeScript-5.4-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5.4" />
   <img src="https://img.shields.io/badge/SQLite-EF%20Core-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
   <br/>
   <img src="https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
@@ -39,7 +39,7 @@
 
 ---
 
-**Kim Okur?** (*"Who reads?"*) lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API on .NET 10**, the front end is an **Angular 16 SPA**. Authentication uses **JWT**, images live on **Cloudinary**, and the API documents itself with **OpenAPI** and an interactive **Scalar** reference.
+**Kim Okur?** (*"Who reads?"*) lets registered readers build a profile, upload photos, discover other readers with filters, like them and send messages. The back end is an **ASP.NET Core Web API on .NET 10**, the front end is an **Angular 17 SPA**. Authentication uses **JWT**, images live on **Cloudinary**, and the API documents itself with **OpenAPI** and an interactive **Scalar** reference.
 
 > [!NOTE]
 > The application UI is in Turkish; code, API and documentation are in English.
@@ -50,7 +50,7 @@
 <table align="center">
   <tr>
     <td align="center" width="25%"><h2>.NET 10</h2><sub>API migrated from<br/>.NET Core 2.2</sub></td>
-    <td align="center" width="25%"><h2>8 → 16</h2><sub>Angular majors upgraded<br/>one step at a time</sub></td>
+    <td align="center" width="25%"><h2>8 → 17</h2><sub>Angular majors upgraded<br/>one step at a time</sub></td>
     <td align="center" width="25%"><h2>6</h2><sub>Mermaid / UML diagrams<br/>in this README</sub></td>
     <td align="center" width="25%"><h2>3</h2><sub>GitHub Actions workflows<br/>CI · releases · PR automation</sub></td>
   </tr>
@@ -153,7 +153,7 @@
 | 🗄️ **Database** | SQLite with EF Core migrations |
 | 🔐 **Authentication** | JWT Bearer, HMAC-SHA512 password hashing |
 | ☁️ **Media** | Cloudinary (CloudinaryDotNet) |
-| 🅰️ **Frontend** | Angular 16 (Ivy, webpack 5), TypeScript 4.9, RxJS 7, ngx-bootstrap 11, Bootswatch (United), ng-gallery + Angular CDK, ng2-file-upload, AlertifyJS |
+| 🅰️ **Frontend** | Angular 17 (Ivy, webpack 5), TypeScript 5.4, RxJS 7, ngx-bootstrap 12, Bootswatch (United), ng-gallery + Angular CDK, ng2-file-upload, AlertifyJS |
 | 🧹 **Code quality** | ESLint with `@angular-eslint` (TypeScript + template rules) |
 | 🚦 **CI/CD** | GitHub Actions — SPA build/lint/test, automatic semantic releases, PR labelling and assignment |
 
@@ -165,7 +165,7 @@ The SPA talks to the API over REST/JSON and sends a JWT with every request. The 
 
 ```mermaid
 flowchart LR
-    subgraph SPA["🅰️ Angular 16 SPA"]
+    subgraph SPA["🅰️ Angular 17 SPA"]
         direction TB
         CMP["Components"] --> SRV["Services<br/>Auth / User / Alertify"]
         RES["Route Resolvers"] --> SRV
@@ -431,12 +431,12 @@ In development the API serves an interactive reference built with **OpenAPI + Sc
 - ⏱️ **Action filter** — `LogUserActivity` updates the user's last-active time on every authorized request.
 - 📘 **Self-documenting API** — runtime OpenAPI document and a Scalar UI, enabled in development only.
 - 🅰️ **Angular patterns** — route **resolvers** pre-load data, **guards** block unauthorized access and unsaved-changes loss, a central **HTTP error interceptor** handles failures.
-- 🔁 **Modernization** — **.NET Core 2.2 → .NET 10** and **Angular 8 → 16**, documented step by step in the [Upgrade Journey](#upgrade-journey).
+- 🔁 **Modernization** — **.NET Core 2.2 → .NET 10** and **Angular 8 → 17**, documented step by step in the [Upgrade Journey](#upgrade-journey).
 - 🚦 **Release automation** — every merged PR becomes a GitHub release with a semantic version: a branch named `*major*` or the `breaking` label bumps **major**, `enhancement` bumps **minor**, anything else bumps **patch**. PRs are labelled from their branch name and auto-assigned to their author and merger.
 
 <a name="upgrade-journey"></a>
 
-## 🧭 Angular Upgrade Journey: 8 → 16
+## 🧭 Angular Upgrade Journey: 8 → 17
 
 The SPA started on **Angular 8 (2019)**. Instead of jumping versions, it was upgraded **one major release at a time**: `ng update`, review the migration diff, fix incompatible libraries, then prove the result with a build, an AOT compile and a browser smoke test before moving on. The path continues toward Angular 22.
 
@@ -450,15 +450,16 @@ flowchart LR
     A13 --> A14["Angular 14<br/>Typed forms"]
     A14 --> A15["Angular 15<br/>RxJS 7 · TS 4.9"]
     A15 --> A16["Angular 16<br/>No ngcc · Ivy libs"]
-    A16 -.->|"planned"| NEXT["Angular 17 to 22"]
+    A16 --> A17["Angular 17<br/>TS 5.4 · Node 20+"]
+    A17 -.->|"planned"| NEXT["Angular 18 to 22"]
 
     classDef old fill:#9E9E9E,stroke:#616161,color:#ffffff
     classDef step fill:#772953,stroke:#4E1B37,color:#ffffff
     classDef now fill:#DD0031,stroke:#A3001F,color:#ffffff,stroke-width:3px
     classDef next fill:#ffffff,stroke:#E95420,color:#E95420,stroke-dasharray:5 5
     class A8 old
-    class A9,A10,A11,A12,A13,A14,A15 step
-    class A16 now
+    class A9,A10,A11,A12,A13,A14,A15,A16 step
+    class A17 now
     class NEXT next
 ```
 
@@ -472,7 +473,8 @@ flowchart LR
 | ![13](https://img.shields.io/badge/13-ESLint-772953?style=flat-square) | 13.4.0 | 13.3.11 | 4.6.4 | View Engine removed, IE 11 dropped, **TSLint → ESLint**, persistent build cache |
 | ![14](https://img.shields.io/badge/14-Typed%20forms-772953?style=flat-square) | 14.3.0 | 14.2.13 | 4.6.4 | **Typed forms**, strict `pathMatch` types, ES2020 target, `^` version ranges |
 | ![15](https://img.shields.io/badge/15-RxJS%207-772953?style=flat-square) | 15.2.10 | 15.2.11 | 4.9.5 | **RxJS 7**, ES2022 target, router `relativeLinkResolution` removed, CI-identical installs |
-| ![16](https://img.shields.io/badge/16-No%20ngcc-DD0031?style=flat-square) | 16.2.12 | 16.2.16 | 4.9.5 | **ngcc removed** — every library on Ivy, deprecated guard/resolver interfaces dropped |
+| ![16](https://img.shields.io/badge/16-No%20ngcc-772953?style=flat-square) | 16.2.12 | 16.2.16 | 4.9.5 | **ngcc removed** — every library on Ivy, deprecated guard/resolver interfaces dropped |
+| ![17](https://img.shields.io/badge/17-TypeScript%205-DD0031?style=flat-square) | 17.3.12 | 17.3.17 | 5.4.5 | **TypeScript 5**, zone.js 0.14, `buildTarget`, Node 20/22 support, new control flow available |
 
 <details open>
 <summary><b>① Angular 8 → 9 — Ivy arrives</b></summary>
@@ -591,15 +593,29 @@ Angular 9 switched the compiler to **Ivy**, which is where most of the real work
 
 </details>
 
+<details>
+<summary><b>⑨ Angular 16 → 17 — TypeScript 5 and a gallery that changed its defaults</b></summary>
+<br/>
+
+- Upgraded to Angular **17.3.12**, CLI **17.3.17**, **TypeScript 5.4.5**, zone.js **0.14**, `@angular/cdk` **17.3.10** and `@angular-eslint` **17.5.3** (with `@typescript-eslint` 7), on a fresh `major_*` branch cut from the updated `master`.
+- **Libraries in lockstep:** `ngx-bootstrap` **12** and `ng2-file-upload` **6** only accept Angular 17, so they went into the **same `ng update` call** as the framework; the CDK followed in its own run (the step ⑦ lesson), then `ng-gallery` moved to its Angular 17 line, **12.0.0**.
+- Migrations were light: `browserTarget` → **`buildTarget`** in `angular.json`, and a check that no template uses `@` or `}` literally, because Angular 17 reserves them for the new **built-in control flow** (`@if`, `@for`). Converting `*ngIf` / `*ngFor` to the new syntax is optional and kept out of this step so the diff stays an upgrade, not a rewrite.
+- **Node 22 is officially supported now.** Angular 17 accepts Node `^18.13 || >=20.9`, so the Node 22 used by GitHub Actions is inside the supported range for the first time.
+- **End-to-end test caught a silent visual change:** after the upgrade the reader's photo tab showed a single large image with no thumbnail strip and no `1 / 2` counter. Nothing failed — `ng-gallery` 12 simply switched **thumbnails and the counter off by default**. Both are now enabled explicitly in the template, and clicking a thumbnail was re-tested (`1 / 2` → `2 / 2`).
+- **Registration had the same birthday bug as step ⑧.** A reader who picked *18 January 1995* was stored as **17 January**: the registration form still sent the datepicker's `Date` through `Date.toJSON()` (UTC). The time-zone-free conversion from step ⑧ now lives in one shared helper (`_helpers/local-date.ts`) used by both registration and profile save; a new registration was re-tested and the API returns `1995-01-18`.
+- ✅ **Result:** clean build, ESLint passes, strict `npm ci` passes, headless Karma runs green, and an end-to-end run — registration with the datepicker's year/month/day views, login, sorting, paging, navbar menu, reader profile and gallery, profile save (birthday kept), photo upload area, mailbox and favourites — with a clean console. The initial bundle is **4.81 MB**.
+
+</details>
+
 #### ✅ What was verified at every step
 
 | Check | Result |
 |---|---|
 | `ng build` (AOT / Ivy) | ✅ passes on every version |
 | Browser smoke test (`ng serve`: home page, registration form, datepicker, console) | ✅ no errors |
-| End-to-end check on Angular 14–16 (API running, login, member list paging and sorting, reader profile, photo gallery, profile edit and save, favourites, messages, navbar menu) | ✅ no errors |
+| End-to-end check on Angular 14–17 (API running, registration, login, member list paging and sorting, reader profile, photo gallery, profile edit and save, favourites, messages, navbar menu) | ✅ no errors |
 | Clean `npm ci` with strict peer dependencies (Node 18 / npm 10, as in CI) | ✅ from Angular 15 on |
-| `ng lint` | ✅ ESLint: all files pass on Angular 13–16 (TSLint with 0 errors up to Angular 12) |
+| `ng lint` | ✅ ESLint: all files pass on Angular 13–17 (TSLint with 0 errors up to Angular 12) |
 | Unit tests | ⏳ the failing Angular CLI scaffold specs were removed on Angular 16; the Karma/Jasmine setup is kept (empty runs pass, CI uses headless Chrome) and real tests are next on the roadmap |
 | Production build | ⚠️ needs an `apiUrl` in `environment.prod.ts` — on the roadmap |
 
@@ -617,7 +633,7 @@ Angular 9 switched the compiler to **Ivy**, which is where most of the real work
 ## 🚀 Getting Started
 
 > [!WARNING]
-> **Node.js 16.14+ / 18.10+ is required** for Angular 16 (`nvm use 18` is recommended); newer Node versions are not supported by this Angular release. You also need the **.NET 10 SDK**.
+> **Node.js 18.13+ or 20.9+ is required** for Angular 17 (`nvm use 20` or `nvm use 18`); CI runs on Node 22. You also need the **.NET 10 SDK**.
 
 ### 1️⃣ API
 
@@ -668,7 +684,7 @@ KimOkurAPP
 ## 🛣️ Roadmap
 
 - [x] Migrate the API from .NET Core 2.2 to .NET 10
-- [x] Upgrade the SPA from Angular 8 to Angular 16
+- [x] Upgrade the SPA from Angular 8 to Angular 17
 - [x] Migrate linting from TSLint to ESLint
 - [x] Interactive API documentation with OpenAPI + Scalar
 - [x] Automatic semantic releases and PR labelling/assignment
@@ -676,7 +692,7 @@ KimOkurAPP
 - [x] Fix JWT signing (strong key via user-secrets, one shared key helper)
 - [x] Reproducible installs with strict peer dependencies, matching CI
 - [x] Every library on Ivy — no `ngcc` / View Engine dependencies left
-- [ ] Angular 16 → 22 upgrade (one major version at a time)
+- [ ] Angular 17 → 22 upgrade (one major version at a time)
 - [ ] Fix the `MessagesController` route conflict so sending and deleting messages works
 - [x] Remove the failing Angular CLI scaffold specs (test setup kept for real tests)
 - [ ] Write real unit tests for the SPA (services, guards, resolvers, components)
@@ -696,7 +712,7 @@ KimOkurAPP
 </p>
 
 <p align="center">
-  Upgrading a 2019 codebase across <b>.NET Core 2.2 → .NET 10</b> and <b>Angular 8 → 16</b> took many careful steps.<br/>
+  Upgrading a 2019 codebase across <b>.NET Core 2.2 → .NET 10</b> and <b>Angular 8 → 17</b> took many careful steps.<br/>
   If anything here helped you — the <b>upgrade playbook</b>, the <b>release automation</b> or the <b>UML diagrams</b> — a star makes it easier for others to find.
 </p>
 
@@ -729,7 +745,7 @@ KimOkurAPP
   <a href="https://github.com/NisanurBulut/KimOkurAPP"><img src="https://img.shields.io/github/stars/NisanurBulut/KimOkurAPP?style=for-the-badge&logo=github&label=Star%20Kim%20Okur%3F&color=E95420&labelColor=772953" alt="Star Kim Okur? on GitHub" /></a>
   <a href="https://github.com/NisanurBulut/KimOkurAPP/fork"><img src="https://img.shields.io/github/forks/NisanurBulut/KimOkurAPP?style=for-the-badge&logo=github&label=Fork&color=E95420&labelColor=772953" alt="Fork on GitHub" /></a>
   <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><img src="https://img.shields.io/badge/Share%20on-LinkedIn-0A66C2?style=for-the-badge" alt="Share on LinkedIn" /></a>
-  <a href="https://twitter.com/intent/tweet?text=Kim%20Okur%3F%20%E2%80%94%20an%20ASP.NET%20Core%20(.NET%2010)%20%2B%20Angular%20app%2C%20upgraded%20Angular%208%20%E2%86%92%2016%20step%20by%20step%20with%20a%20documented%20playbook&url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><img src="https://img.shields.io/badge/Share%20on-X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Share on X" /></a>
+  <a href="https://twitter.com/intent/tweet?text=Kim%20Okur%3F%20%E2%80%94%20an%20ASP.NET%20Core%20(.NET%2010)%20%2B%20Angular%20app%2C%20upgraded%20Angular%208%20%E2%86%92%2017%20step%20by%20step%20with%20a%20documented%20playbook&url=https%3A%2F%2Fgithub.com%2FNisanurBulut%2FKimOkurAPP"><img src="https://img.shields.io/badge/Share%20on-X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Share on X" /></a>
 </p>
 
 <p align="center">

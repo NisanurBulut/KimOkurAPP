@@ -5,6 +5,7 @@ import { UntypedFormGroup, FormControl, Validators, UntypedFormBuilder } from '@
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { User } from '../_models/User';
 import { Router } from '@angular/router';
+import { toLocalDate } from '../_helpers/local-date';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,8 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     if (this.registerForm.valid) {
-      this.user = Object.assign({}, this.registerForm.value);
+      const formValue = this.registerForm.value;
+      this.user = Object.assign({}, formValue, { dateOfBirth: toLocalDate(formValue.dateOfBirth) });
       this.authService.register(this.user).subscribe(() => {
         this.alertify.success('Kullanıcı kayıt işlemi başarılıdır.');
       },
