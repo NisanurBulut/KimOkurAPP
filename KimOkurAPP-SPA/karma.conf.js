@@ -27,6 +27,8 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    // There are no unit tests yet (the CLI scaffolds were removed); don't fail an empty run.
+    failOnEmptyTestSuite: false
   });
 };

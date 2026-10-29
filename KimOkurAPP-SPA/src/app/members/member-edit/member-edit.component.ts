@@ -47,6 +47,10 @@ export class MemberEditComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.userIdentity = data['userIdentity'];
+      // The API sends dateOfBirth as an ISO string; ngx-bootstrap's datepicker (v10+) needs a Date.
+      if (this.userIdentity && this.userIdentity.dateOfBirth) {
+        this.userIdentity.dateOfBirth = new Date(this.userIdentity.dateOfBirth);
+      }
       console.log(this.userIdentity);
     });
 
