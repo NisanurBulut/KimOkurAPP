@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  Router,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Observable, of } from 'rxjs';
@@ -13,7 +9,7 @@ import { Message } from '../_models/Message';
 import { PaginatedResult } from '../_models/Pagination';
 
 @Injectable()
-export class MessagesResolver implements Resolve<PaginatedResult<Message[]>> {
+export class MessagesResolver  {
   pageNumber = 1;
   pageSize = 5;
   messageContainer = 'Unread';

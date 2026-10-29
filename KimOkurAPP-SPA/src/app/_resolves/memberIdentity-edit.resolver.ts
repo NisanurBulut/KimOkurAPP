@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserIdentity } from '../_models/UserIdentity';
-import {
-  Resolve,
-  Route,
-  Router,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Route, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Observable, of } from 'rxjs';
@@ -14,7 +9,7 @@ import { AuthService } from '../_services/auth.service';
 
 
 @Injectable()
-export class MemberIdentityEditResolver implements Resolve<UserIdentity> {
+export class MemberIdentityEditResolver  {
   constructor(
     private userService: UserService,
     private authservice: AuthService,
